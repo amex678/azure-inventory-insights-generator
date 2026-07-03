@@ -31,11 +31,12 @@ function Read-JsonArray([string]$path) {
     if ($null -eq $data) { return @() }
     return @($data)
 }
-    function ConvertTo-HtmlEncoded([string]$s) {
+function ConvertTo-HtmlEncoded {
+  param([string]$s)
+
     if ($null -eq $s) { return '' }
     return [System.Net.WebUtility]::HtmlEncode($s)
 }
-    Set-Alias -Name ConvertTo-HtmlEncoded -Value ConvertTo-HtmlEncoded
 
 $resources   = Read-JsonArray $ResourcesJson
 $assignments = Read-JsonArray $RbacJson
