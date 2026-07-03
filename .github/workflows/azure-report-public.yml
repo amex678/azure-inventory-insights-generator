@@ -9,6 +9,10 @@ permissions:
   id-token: write
   contents: read
 
+env:
+  PUBLISH_REPO: amex678/azure-inventory-insights-reports-published
+  PUBLISH_BRANCH: main
+
 jobs:
   generate-report:
     runs-on: ubuntu-latest
@@ -51,3 +55,38 @@ jobs:
           path: output/
           if-no-files-found: error
           retention-days: 30
+
+      - name: Load publish SSH key
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.PUBLISH_REPO_SSH_KEY }}
+
+      - name: Publish reports to external repository
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          run_date="$(date -u +%Y-%m-%d)"
+          publish_dir="$RUNNER_TEMP/published-repo"
+
+          git clone "git@github.com:${PUBLISH_REPO}.git" "$publish_dir"
+
+          mkdir -p "$publish_dir/reports/history/$run_date"
+          mkdir -p "$publish_dir/reports/latest"
+
+          cp -R output/. "$publish_dir/reports/history/$run_date/"
+          rm -rf "$publish_dir/reports/latest"/*
+          cp -R output/. "$publish_dir/reports/latest/"
+          cp output/comprehensive-report.html "$publish_dir/index.html"
+          touch "$publish_dir/.nojekyll"
+
+          cd "$publish_dir"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          if git diff --cached --quiet; then
+            echo "No report changes to publish"
+            exit 0
+          fi
+          git commit -m "Publish Azure inventory report [skip ci]"
+          git push origin "${PUBLISH_BRANCH}"
