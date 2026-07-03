@@ -7,11 +7,8 @@ on:
 
 permissions:
   id-token: write
-  contents: read
-
-env:
-  PUBLISH_REPO: amex678/azure-inventory-insights-reports-published
-  PUBLISH_BRANCH: main
+  contents: write
+  pages: write
 
 jobs:
   generate-report:
@@ -56,37 +53,54 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
-      - name: Load publish SSH key
-        uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.PUBLISH_REPO_SSH_KEY }}
+      - name: Prepare report outputs for repository and Pages
+        shell: pwsh
+        run: |
+          $runDate = Get-Date -Format 'yyyy-MM-dd'
+          $historyDir = Join-Path 'reports/history' $runDate
+          $latestDir = 'reports/latest'
+          $pagesDir = '_site'
 
-      - name: Publish reports to external repository
+          New-Item -ItemType Directory -Path $historyDir -Force | Out-Null
+          New-Item -ItemType Directory -Path $latestDir -Force | Out-Null
+          New-Item -ItemType Directory -Path $pagesDir -Force | Out-Null
+
+          Copy-Item -Path output/* -Destination $historyDir -Recurse -Force
+          Copy-Item -Path output/* -Destination $latestDir -Recurse -Force
+          Copy-Item -Path output/* -Destination $pagesDir -Recurse -Force
+
+          Copy-Item -Path output/comprehensive-report.html -Destination (Join-Path $latestDir 'index.html') -Force
+          Copy-Item -Path output/comprehensive-report.html -Destination (Join-Path $pagesDir 'index.html') -Force
+          '' | Set-Content -Path (Join-Path $pagesDir '.nojekyll') -Encoding utf8
+
+      - name: Commit report snapshot to repository
         shell: bash
         run: |
-          set -euo pipefail
-
-          run_date="$(date -u +%Y-%m-%d)"
-          publish_dir="$RUNNER_TEMP/published-repo"
-
-          git clone "git@github.com:${PUBLISH_REPO}.git" "$publish_dir"
-
-          mkdir -p "$publish_dir/reports/history/$run_date"
-          mkdir -p "$publish_dir/reports/latest"
-
-          cp -R output/. "$publish_dir/reports/history/$run_date/"
-          rm -rf "$publish_dir/reports/latest"/*
-          cp -R output/. "$publish_dir/reports/latest/"
-          cp output/comprehensive-report.html "$publish_dir/index.html"
-          touch "$publish_dir/.nojekyll"
-
-          cd "$publish_dir"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add .
+          git add -f reports/
           if git diff --cached --quiet; then
-            echo "No report changes to publish"
+            echo "No report changes to commit"
             exit 0
           fi
           git commit -m "Publish Azure inventory report [skip ci]"
-          git push origin "${PUBLISH_BRANCH}"
+          git push
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site/
+
+  deploy-pages:
+    needs: generate-report
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
