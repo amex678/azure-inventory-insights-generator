@@ -3,24 +3,33 @@ name: Azure Inventory Report - Public OIDC
 on:
   workflow_dispatch:
   schedule:
-    # Temporary verification schedule (every 30 min at :17 and :47, UTC).
-    # Fixed minutes avoid the top-of-hour peak to improve trigger reliability.
-    # Remove after one schedule run is confirmed.
-    - cron: '17,47 * * * *'
     # Weekly production run: Monday 02:07 UTC (offset from :00 to dodge the peak).
+    # (High-frequency verification cron removed now that scheduled triggering is confirmed;
+    #  each run consumes a Copilot premium request, so weekly is the production cadence.)
     - cron: '7 2 * * 1'
+
+# Single-flight: never run two report generations at once (avoids duplicate agent tasks).
+concurrency:
+  group: azure-report
+  cancel-in-progress: false
 
 permissions:
   id-token: write
   contents: write
   pages: write
+  pull-requests: write
 
 jobs:
   generate-report:
     runs-on: ubuntu-latest
+    timeout-minutes: 90
+    # Defense-in-depth against self-trigger loops (agent commits never run this workflow).
+    if: ${{ github.actor != 'copilot-swe-agent[bot]' }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Azure login with OIDC
         uses: azure/login@v2
@@ -40,18 +49,169 @@ jobs:
       - name: Generate Azure inventory datasets
         shell: pwsh
         run: |
+          # Never carry a committed body.json into the runtime output/ (avoid stale prose).
+          Remove-Item output/body.json -ErrorAction SilentlyContinue
           ./scripts/Export-AzResources.ps1
           ./scripts/Export-AzRoleAssignments.ps1
           ./scripts/Export-AzNsgRules.ps1
           ./scripts/Export-AzDefenderRecommendations.ps1
           ./scripts/Export-AzAdvisorRecommendations.ps1
 
-      - name: Build comprehensive HTML report
+      - name: Export deterministic facts (single source of truth)
         shell: pwsh
         run: |
-          ./scripts/New-AzComprehensiveAdminReport.ps1
+          ./scripts/Export-AzFacts.ps1
+          if (-not (Test-Path output/facts.json)) { throw 'facts.json was not produced.' }
+
+      - name: Build rule-based fallback report (baseline)
+        shell: pwsh
+        run: |
+          # Render the deterministic rule-based HTML now so a valid report always exists,
+          # even if the Copilot Agent path fails. Overwritten later only if the AI gates pass.
+          ./scripts/New-AzComprehensiveAdminReport.ps1 -RunId $env:GITHUB_RUN_ID
+          if (-not (Test-Path output/comprehensive-report.html)) { throw 'baseline report not produced.' }
+
+      - name: Launch Copilot Cloud Agent (narrative authoring)
+        id: agent
+        continue-on-error: true
+        shell: pwsh
+        env:
+          COPILOT_AGENT_PAT: ${{ secrets.COPILOT_AGENT_PAT }}
+          COPILOT_AGENT_MODEL: ${{ vars.COPILOT_AGENT_MODEL }}
+        run: |
+          ./scripts/Start-CopilotReportTask.ps1 `
+            -Owner '${{ github.repository_owner }}' `
+            -Repo '${{ github.event.repository.name }}' `
+            -BaseRef '${{ github.event.repository.default_branch }}' `
+            -TimeoutMinutes 25 `
+            -PollSeconds 20
+
+      - name: Quality gate and final render
+        id: gate
+        if: ${{ !cancelled() }}
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Pass agent outputs via env (never interpolate agent-controlled data into code).
+          AGENT_SUCCESS: ${{ steps.agent.outputs.success }}
+          AGENT_HEAD_REF: ${{ steps.agent.outputs.head_ref }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          $ErrorActionPreference = 'Continue'
+          $mode = 'fallback'
+          $reason = ''
+          $prNum = ''
+          $success = $env:AGENT_SUCCESS
+          $headRef = $env:AGENT_HEAD_REF
+          $default = if ($env:DEFAULT_BRANCH) { $env:DEFAULT_BRANCH } else { 'main' }
+          $tmpBody = Join-Path $env:RUNNER_TEMP 'agent-body.json'
+
+          function Add-Summary { param([string]$t) if ($env:GITHUB_STEP_SUMMARY) { Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value $t -Encoding utf8 } }
+
+          try {
+            # Validate the agent-controlled ref before using it anywhere.
+            if ($success -eq 'true' -and $headRef -and ($headRef -match '^[A-Za-z0-9._/-]+$')) {
+              Write-Host "Agent reported success. head_ref=$headRef"
+              git fetch origin $headRef 2>&1 | Out-Host
+
+              # Does the PR branch actually contain output/body.json? (native cmd -> check exit code)
+              git cat-file -e "FETCH_HEAD:output/body.json" 2>$null
+              if ($LASTEXITCODE -ne 0) {
+                $reason = 'PR branch did not contain output/body.json'
+              } else {
+                # Extract to an ISOLATED temp path (never stage into working tree / output/).
+                git show "FETCH_HEAD:output/body.json" | Set-Content -Path $tmpBody -Encoding utf8
+
+                # Resolve PR number (for exact diff + later close).
+                try { $prNum = (gh pr list --head $headRef --state open --json number --jq '.[0].number') } catch { $prNum = '' }
+
+                $gatesOk = $true
+
+                # --- run_id freshness: body must belong to THIS run's facts ---
+                try {
+                  $bodyDoc  = Get-Content $tmpBody -Raw -Encoding UTF8 | ConvertFrom-Json
+                  $factsDoc = Get-Content output/facts.json -Raw -Encoding UTF8 | ConvertFrom-Json
+                  $bodyRun  = [string]$bodyDoc.generator.run_id
+                  $factsRun = [string]$factsDoc.meta.runId
+                  if ($factsRun -and $bodyRun -ne $factsRun) {
+                    $gatesOk = $false; $reason = "run_id mismatch (body=$bodyRun facts=$factsRun) - stale body"
+                  }
+                } catch { $gatesOk = $false; $reason = "body/facts parse error: $($_.Exception.Message)" }
+
+                # --- Gate 1: allowlist (only output/body.json may change) ---
+                if ($gatesOk) {
+                  if ($prNum) {
+                    $changed = (gh pr diff $prNum --name-only) -join "`n"
+                  } else {
+                    $base = (git merge-base "origin/$default" FETCH_HEAD).Trim()
+                    $changed = (git diff --name-only $base FETCH_HEAD) -join "`n"
+                  }
+                  if ($changed -notmatch '(?m)^output/body\.json$') {
+                    $gatesOk = $false; $reason = 'PR diff does not include output/body.json'
+                  } else {
+                    pwsh -NoProfile -File scripts/ci/Test-BodyAllowlist.ps1 -ChangedFiles $changed
+                    if ($LASTEXITCODE -ne 0) { $gatesOk = $false; $reason = 'allowlist gate failed' }
+                  }
+                }
+
+                # --- Gate 2: factcheck ---
+                if ($gatesOk) {
+                  pwsh -NoProfile -File scripts/ci/Test-BodyFactcheck.ps1 -BodyJson $tmpBody -FactsJson output/facts.json
+                  if ($LASTEXITCODE -ne 0) { $gatesOk = $false; $reason = 'factcheck gate failed' }
+                }
+
+                # --- Gate 3: sanitize ---
+                if ($gatesOk) {
+                  pwsh -NoProfile -File scripts/ci/Test-BodySanitize.ps1 -BodyJson $tmpBody
+                  if ($LASTEXITCODE -ne 0) { $gatesOk = $false; $reason = 'sanitize gate failed' }
+                }
+
+                # --- Render AI narrative from the validated temp body ---
+                if ($gatesOk) {
+                  try {
+                    ./scripts/New-AzComprehensiveAdminReport.ps1 -BodyJson $tmpBody -RunId $env:GITHUB_RUN_ID
+                    if (-not (Test-Path output/comprehensive-report.html)) { throw 'AI render produced no HTML' }
+                    $mode = 'ai'
+                  } catch {
+                    $reason = "AI render failed: $($_.Exception.Message)"
+                    # Re-render deterministic fallback to guarantee a clean HTML.
+                    ./scripts/New-AzComprehensiveAdminReport.ps1 -RunId $env:GITHUB_RUN_ID
+                    $mode = 'fallback'
+                  }
+                }
+              }
+            } else {
+              $reason = if ($success -ne 'true') { "agent did not succeed (success=$success)" } else { "missing/invalid head_ref" }
+            }
+          } catch {
+            $reason = "gate step error: $($_.Exception.Message)"
+            $mode = 'fallback'
+          } finally {
+            # Defensive: the AI body must never linger in output/ (would be published by Copy-Item output/*).
+            Remove-Item output/body.json -ErrorAction SilentlyContinue
+          }
+
+          if ($mode -eq 'ai') {
+            Add-Summary "> [!NOTE]"
+            Add-Summary "> **Report narrative: Copilot Cloud Agent (AI)**  "
+            Add-Summary "> quality gates: passed  "
+            Add-Summary "> run_id: $($env:GITHUB_RUN_ID)"
+          } else {
+            Add-Summary "> [!WARNING]"
+            Add-Summary "> **Report narrative: rule-based fallback**  "
+            Add-Summary "> reason: $reason  "
+            Add-Summary "> run_id: $($env:GITHUB_RUN_ID)"
+          }
+          # Collapse to a single line so it is safe for the GITHUB_OUTPUT key=value format.
+          $reason = ($reason -replace '[\r\n]+', ' ').Trim()
+          Write-Host "render mode = $mode ; reason = $reason ; pr = $prNum"
+          "mode=$mode"     | Add-Content -Path $env:GITHUB_OUTPUT
+          "pr_number=$prNum" | Add-Content -Path $env:GITHUB_OUTPUT
+          "reason=$reason" | Add-Content -Path $env:GITHUB_OUTPUT
+          exit 0
 
       - name: Upload generated report artifacts
+        if: ${{ !cancelled() }}
         uses: actions/upload-artifact@v4
         with:
           name: azure-inventory-report
@@ -60,6 +220,7 @@ jobs:
           retention-days: 30
 
       - name: Prepare report outputs for repository and Pages
+        if: ${{ !cancelled() }}
         shell: pwsh
         run: |
           $runDate = Get-Date -Format 'yyyy-MM-dd'
@@ -80,22 +241,48 @@ jobs:
           '' | Set-Content -Path (Join-Path $pagesDir '.nojekyll') -Encoding utf8
 
       - name: Commit report snapshot to repository
+        if: ${{ !cancelled() }}
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Restrict staging strictly to reports/ (never commit temp/AI artifacts).
+          git reset -q -- . || true
           git add -f reports/
-          if git diff --cached --quiet; then
+          if git diff --cached --quiet -- reports/; then
             echo "No report changes to commit"
             exit 0
           fi
-          git commit -m "Publish Azure inventory report [skip ci]"
+          git commit -m "Publish Azure inventory report (${{ steps.gate.outputs.mode }}) [skip ci]" -- reports/
           git push
 
       - name: Upload Pages artifact
+        if: ${{ !cancelled() }}
         uses: actions/upload-pages-artifact@v3
         with:
           path: _site/
+
+      - name: Close agent vehicle PR
+        # Publishing is done; the PR was only a delivery vehicle for body.json.
+        # We do NOT merge it (avoids non-fast-forward races and keeps main free of runtime prose);
+        # the closed PR + its branch history remain as the audit trail.
+        if: ${{ !cancelled() && steps.gate.outputs.pr_number != '' }}
+        shell: pwsh
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          $pr = '${{ steps.gate.outputs.pr_number }}'
+          $mode = '${{ steps.gate.outputs.mode }}'
+          $reason = @'
+          ${{ steps.gate.outputs.reason }}
+          '@
+          $msg = if ($mode -eq 'ai') {
+            "Narrative consumed and published (mode=ai) by run $($env:GITHUB_RUN_ID). Closing delivery PR."
+          } else {
+            "Quality gate/agent did not pass ($reason). Published rule-based fallback in run $($env:GITHUB_RUN_ID). Closing PR."
+          }
+          gh pr close $pr --comment $msg --delete-branch
 
   deploy-pages:
     needs: generate-report
