@@ -124,14 +124,24 @@ VS Code + GitHub Copilot Chat 環境では、以下の prompt を使って一連
 5. 品質ゲート               scripts/ci/Test-Body*.ps1（allowlist / factcheck / sanitize）
                             + run_id 整合・PR 差分検証
    - 全ゲート合格           -> body.json を差し込んで最終 HTML を再レンダリング（mode=ai）
-   - 失敗/Agent 未成功      -> ルールベース HTML のまま公開（mode=fallback）
+   - 内容不備で不合格       -> Copilot に「ゲート指摘」を渡して同じ PR を自動修正（最大 1 回）
+                              修正後に再ゲート合格すれば mode=ai（auto-fixed）
+   - 修正しても不合格 /      -> ルールベース HTML のまま公開（mode=fallback）
+     Agent 未成功・PAT なし
 6. reports/ にコミット + Pages 公開、本文提供元 PR は close（マージはしない）
 ```
 
 - **LLM は HTML を書きません**。Agent は本文 JSON だけを生成し、HTML 化は必ず Actions 側の
   deterministic renderer が行います（XSS・レイアウト崩れ・数値創作を根本から封じる設計）。
-- **フォールバック優先**：Agent 失敗・ゲート不合格・タイムアウトのいずれでも、手順 3 の
-  ルールベース HTML で必ず公開が継続します。採用モード（ai / fallback）と理由は
+- **自動修正リトライ（auto-fix）**：品質ゲートが**内容不備**（数値創作・fact_id 不正・XSS 混入・
+  run_id 不一致・差分逸脱など body.json が生成された上での不合格）で落ちた場合、その**ゲート指摘文を
+  Copilot に添えて同じ PR ブランチを修正させ**、再度ゲートにかけます（既定 1 回、`head_ref` 指定で
+  新規 PR を作らず追記コミット）。合格すれば `mode=ai (auto-fixed)` として公開します。回数は Variable
+  `MAX_FIX_RETRIES`（既定 1、`0` で無効化）で調整できます。
+- **自動修正できないケース**：PAT 未設定 / 401 / タイムアウト / タスク failed など**インフラ起因の失敗**は
+  body.json が得られず Agent 側で直せないため、リトライせず即フォールバックします。
+- **フォールバック優先**：Agent 失敗・ゲート不合格・自動修正後も不合格・タイムアウトのいずれでも、手順 3 の
+  ルールベース HTML で必ず公開が継続します。採用モード（ai / fallback）・自動修正回数・理由は
   Actions のジョブサマリとレポート上部バナーに明示されます。
 - 本文提供用の PR は**マージせず close**します（main を実行時プロダクトで汚さず、
   fast-forward 競合も回避）。監査証跡は close 済み PR とジョブサマリに残ります。
@@ -143,6 +153,7 @@ VS Code + GitHub Copilot Chat 環境では、以下の prompt を使って一連
 | Secret | `AZURE_CLIENT_ID` / `AZURE_TENANT_ID` / `AZURE_SUBSCRIPTION_ID` | Azure OIDC ログイン（既存） |
 | Secret | `COPILOT_AGENT_PAT` | **Copilot Cloud Agent 起動用の user-to-server トークン（必須）** |
 | Variable（任意） | `COPILOT_AGENT_MODEL` | 使用モデルの明示指定（未設定なら auto 選択） |
+| Variable（任意） | `MAX_FIX_RETRIES` | ゲート内容不備時の自動修正リトライ回数（既定 `1`、`0` で無効化） |
 
 > `GITHUB_TOKEN`（server-to-server）では Agent tasks API を呼べません。**必ず PAT が必要**です。
 

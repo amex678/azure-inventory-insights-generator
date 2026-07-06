@@ -41,6 +41,15 @@ param(
     [int]$TimeoutMinutes = 30,
     [int]$PollSeconds     = 20,
 
+    # リトライ（自動修正）用: 既存 PR ブランチ名。指定時は新規 PR を作らず head_ref に追記コミットさせる。
+    [string]$HeadRef = '',
+
+    # リトライ用: プロンプト末尾に追記する追加指示（CI ゲートの指摘内容など）。
+    [string]$ExtraInstructions = '',
+
+    # true の場合 GITHUB_OUTPUT へ書かない（親ステップ内から子プロセスとして呼ぶリトライ時に使用）。
+    [switch]$NoGitHubOutput,
+
     # 後段ジョブ向けメタデータ出力
     [string]$OutputPath = (Join-Path $PSScriptRoot '..\output\agent-task.json'),
 
@@ -49,6 +58,8 @@ param(
 
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
+
+$script:EmitOutput = -not $NoGitHubOutput
 
 # ---- 出力ユーティリティ ---------------------------------------------------
 function Write-StepSummary {
@@ -60,7 +71,7 @@ function Write-StepSummary {
 
 function Set-Output {
     param([string]$Name, [string]$Value)
-    if ($env:GITHUB_OUTPUT) {
+    if ($env:GITHUB_OUTPUT -and $script:EmitOutput) {
         # 複数行値にも耐える heredoc 形式
         $delim = "ghadelim_$([guid]::NewGuid().ToString('N'))"
         Add-Content -Path $env:GITHUB_OUTPUT -Value "$Name<<$delim`n$Value`n$delim" -Encoding utf8
@@ -146,13 +157,40 @@ $factsRaw   = Get-Content -Path $FactsPath -Raw
 $promptTmpl = Get-Content -Path $PromptPath -Raw
 $prompt     = $promptTmpl.Replace('{{FACTS_JSON}}', $factsRaw)
 
-Write-Host "Copilot Agent タスクを起動します: $Owner/$Repo (base_ref=$BaseRef, model=$([string]::IsNullOrWhiteSpace($Model) ? 'auto' : $Model))"
+# リトライ（自動修正）時は、既存 PR の修正であること + CI ゲート指摘を明示的に追記する。
+if (-not [string]::IsNullOrWhiteSpace($ExtraInstructions)) {
+    $prompt += @"
+
+
+---
+
+## 【自動修正の依頼】前回の生成は CI 品質ゲートで却下されました
+
+これは**既存 PR（ブランチ: $HeadRef）の修正依頼**です。新しい PR は作らず、同じ ``output/body.json`` を上書き修正してください。
+下記の指摘を**すべて解消**したうえで、厳守事項（数値創作禁止・HTML 禁止・fact_ids 必須・run_id 一致）を改めて満たしてください。
+
+### CI ゲートの指摘（原文）
+
+``````
+$ExtraInstructions
+``````
+"@
+}
+
+$isRetry = -not [string]::IsNullOrWhiteSpace($HeadRef)
+$mode    = if ($isRetry) { "retry(head_ref=$HeadRef)" } else { 'new-pr' }
+Write-Host "Copilot Agent タスクを起動します: $Owner/$Repo (base_ref=$BaseRef, model=$([string]::IsNullOrWhiteSpace($Model) ? 'auto' : $Model), $mode)"
 
 # ---- タスク起動 -----------------------------------------------------------
 $body = [ordered]@{
-    prompt              = $prompt
-    base_ref            = $BaseRef
-    create_pull_request = $true
+    prompt   = $prompt
+    base_ref = $BaseRef
+}
+if ($isRetry) {
+    # head_ref + base_ref を渡すと Agent は既存 PR コンテキストを参照し head_ref に追記コミットする。
+    $body.head_ref = $HeadRef
+} else {
+    $body.create_pull_request = $true
 }
 if (-not [string]::IsNullOrWhiteSpace($Model)) { $body.model = $Model }
 
@@ -224,6 +262,9 @@ while ($true) {
 }
 
 # ---- 成功メタデータ出力 ---------------------------------------------------
+# リトライ（既存ブランチ追記）では branch artifact が返らないことがあるため補完する。
+if (-not $headRef -and $HeadRef) { $headRef = $HeadRef }
+
 $prGlobalId = if ($pullArtifact -and ($pullArtifact.PSObject.Properties.Name -contains 'global_id')) { $pullArtifact.global_id } else { $null }
 $prDbId     = if ($pullArtifact -and ($pullArtifact.PSObject.Properties.Name -contains 'id'))        { $pullArtifact.id }        else { $null }
 

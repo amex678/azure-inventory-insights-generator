@@ -22,7 +22,7 @@ permissions:
 jobs:
   generate-report:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 120
     # Defense-in-depth against self-trigger loops (agent commits never run this workflow).
     if: ${{ github.actor != 'copilot-swe-agent[bot]' }}
     steps:
@@ -84,14 +84,22 @@ jobs:
             -Repo '${{ github.event.repository.name }}' `
             -BaseRef '${{ github.event.repository.default_branch }}' `
             -TimeoutMinutes 25 `
-            -PollSeconds 20
+            -PollSeconds 20 `
+            -OutputPath "$env:RUNNER_TEMP/agent-task.json"
 
-      - name: Quality gate and final render
+      - name: Quality gate, auto-fix retry, and final render
         id: gate
         if: ${{ !cancelled() }}
         shell: pwsh
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # PAT is needed here too, to launch the auto-fix task on gate failure.
+          COPILOT_AGENT_PAT: ${{ secrets.COPILOT_AGENT_PAT }}
+          COPILOT_AGENT_MODEL: ${{ vars.COPILOT_AGENT_MODEL }}
+          # Max in-run auto-fix attempts (repo variable; default 1). 0 disables auto-fix.
+          MAX_FIX_RETRIES: ${{ vars.MAX_FIX_RETRIES }}
+          OWNER: ${{ github.repository_owner }}
+          REPO: ${{ github.event.repository.name }}
           # Pass agent outputs via env (never interpolate agent-controlled data into code).
           AGENT_SUCCESS: ${{ steps.agent.outputs.success }}
           AGENT_HEAD_REF: ${{ steps.agent.outputs.head_ref }}
@@ -101,83 +109,119 @@ jobs:
           $mode = 'fallback'
           $reason = ''
           $prNum = ''
+          $fixAttempts = 0
           $success = $env:AGENT_SUCCESS
           $headRef = $env:AGENT_HEAD_REF
           $default = if ($env:DEFAULT_BRANCH) { $env:DEFAULT_BRANCH } else { 'main' }
+          $maxRetries = 1
+          if ($env:MAX_FIX_RETRIES -match '^\d+$') { $maxRetries = [int]$env:MAX_FIX_RETRIES }
           $tmpBody = Join-Path $env:RUNNER_TEMP 'agent-body.json'
 
           function Add-Summary { param([string]$t) if ($env:GITHUB_STEP_SUMMARY) { Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value $t -Encoding utf8 } }
+
+          # Fetch the PR branch and extract output/body.json to an ISOLATED temp path.
+          # Returns $true on success. Never stages into the working tree / output/.
+          function Get-BodyFromBranch {
+            param([string]$Ref)
+            git fetch origin $Ref 2>&1 | Out-Host
+            git cat-file -e "FETCH_HEAD:output/body.json" 2>$null
+            if ($LASTEXITCODE -ne 0) { return $false }
+            git show "FETCH_HEAD:output/body.json" | Set-Content -Path $tmpBody -Encoding utf8
+            return (Test-Path $tmpBody)
+          }
+
+          # Run all gates against $tmpBody. Returns a hashtable @{ ok; reason; feedback }.
+          # feedback aggregates the failing gates' human-readable output for the auto-fix prompt.
+          function Invoke-Gates {
+            $fb = [System.Collections.Generic.List[string]]::new()
+
+            # run_id freshness
+            try {
+              $bodyDoc  = Get-Content $tmpBody -Raw -Encoding UTF8 | ConvertFrom-Json
+              $factsDoc = Get-Content output/facts.json -Raw -Encoding UTF8 | ConvertFrom-Json
+              $bodyRun  = [string]$bodyDoc.generator.run_id
+              $factsRun = [string]$factsDoc.meta.runId
+              if ($factsRun -and $bodyRun -ne $factsRun) {
+                $fb.Add("generator.run_id ('$bodyRun') が facts.meta.runId ('$factsRun') と一致していません。run_id を '$factsRun' に設定してください。")
+                return @{ ok = $false; reason = 'run_id mismatch'; feedback = ($fb -join "`n") }
+              }
+            } catch {
+              return @{ ok = $false; reason = "body/facts parse error"; feedback = "body.json が JSON として解析できません: $($_.Exception.Message)" }
+            }
+
+            # allowlist (diff must include body.json and nothing else)
+            if ($prNum) { $changed = (gh pr diff $prNum --name-only) -join "`n" }
+            else {
+              $base = (git merge-base "origin/$default" FETCH_HEAD).Trim()
+              $changed = (git diff --name-only $base FETCH_HEAD) -join "`n"
+            }
+            if ($changed -notmatch '(?m)^output/body\.json$') {
+              $fb.Add("PR の差分に output/body.json が含まれていません。output/body.json のみを変更してください。変更ファイル: $changed")
+              return @{ ok = $false; reason = 'body.json not in diff'; feedback = ($fb -join "`n") }
+            }
+            $o = (pwsh -NoProfile -File scripts/ci/Test-BodyAllowlist.ps1 -ChangedFiles $changed 2>&1 | Out-String)
+            if ($LASTEXITCODE -ne 0) { $fb.Add("[allowlist] $o"); return @{ ok = $false; reason = 'allowlist gate failed'; feedback = ($fb -join "`n") } }
+
+            # factcheck
+            $o = (pwsh -NoProfile -File scripts/ci/Test-BodyFactcheck.ps1 -BodyJson $tmpBody -FactsJson output/facts.json 2>&1 | Out-String)
+            if ($LASTEXITCODE -ne 0) { $fb.Add("[factcheck] $o"); return @{ ok = $false; reason = 'factcheck gate failed'; feedback = ($fb -join "`n") } }
+
+            # sanitize
+            $o = (pwsh -NoProfile -File scripts/ci/Test-BodySanitize.ps1 -BodyJson $tmpBody 2>&1 | Out-String)
+            if ($LASTEXITCODE -ne 0) { $fb.Add("[sanitize] $o"); return @{ ok = $false; reason = 'sanitize gate failed'; feedback = ($fb -join "`n") } }
+
+            return @{ ok = $true; reason = ''; feedback = '' }
+          }
 
           try {
             # Validate the agent-controlled ref before using it anywhere.
             if ($success -eq 'true' -and $headRef -and ($headRef -match '^[A-Za-z0-9._/-]+$')) {
               Write-Host "Agent reported success. head_ref=$headRef"
-              git fetch origin $headRef 2>&1 | Out-Host
-
-              # Does the PR branch actually contain output/body.json? (native cmd -> check exit code)
-              git cat-file -e "FETCH_HEAD:output/body.json" 2>$null
-              if ($LASTEXITCODE -ne 0) {
+              if (-not (Get-BodyFromBranch $headRef)) {
                 $reason = 'PR branch did not contain output/body.json'
               } else {
-                # Extract to an ISOLATED temp path (never stage into working tree / output/).
-                git show "FETCH_HEAD:output/body.json" | Set-Content -Path $tmpBody -Encoding utf8
-
-                # Resolve PR number (for exact diff + later close).
                 try { $prNum = (gh pr list --head $headRef --state open --json number --jq '.[0].number') } catch { $prNum = '' }
 
-                $gatesOk = $true
-
-                # --- run_id freshness: body must belong to THIS run's facts ---
-                try {
-                  $bodyDoc  = Get-Content $tmpBody -Raw -Encoding UTF8 | ConvertFrom-Json
-                  $factsDoc = Get-Content output/facts.json -Raw -Encoding UTF8 | ConvertFrom-Json
-                  $bodyRun  = [string]$bodyDoc.generator.run_id
-                  $factsRun = [string]$factsDoc.meta.runId
-                  if ($factsRun -and $bodyRun -ne $factsRun) {
-                    $gatesOk = $false; $reason = "run_id mismatch (body=$bodyRun facts=$factsRun) - stale body"
+                while ($true) {
+                  $g = Invoke-Gates
+                  if ($g.ok) {
+                    # Render AI narrative from the validated temp body.
+                    try {
+                      ./scripts/New-AzComprehensiveAdminReport.ps1 -BodyJson $tmpBody -RunId $env:GITHUB_RUN_ID
+                      if (-not (Test-Path output/comprehensive-report.html)) { throw 'AI render produced no HTML' }
+                      $mode = 'ai'
+                    } catch {
+                      $reason = "AI render failed: $($_.Exception.Message)"
+                      ./scripts/New-AzComprehensiveAdminReport.ps1 -RunId $env:GITHUB_RUN_ID
+                      $mode = 'fallback'
+                    }
+                    break
                   }
-                } catch { $gatesOk = $false; $reason = "body/facts parse error: $($_.Exception.Message)" }
 
-                # --- Gate 1: allowlist (only output/body.json may change) ---
-                if ($gatesOk) {
-                  if ($prNum) {
-                    $changed = (gh pr diff $prNum --name-only) -join "`n"
-                  } else {
-                    $base = (git merge-base "origin/$default" FETCH_HEAD).Trim()
-                    $changed = (git diff --name-only $base FETCH_HEAD) -join "`n"
+                  $reason = $g.reason
+
+                  # Auto-fix retry: ask Copilot to fix the SAME PR branch using the gate feedback.
+                  # Only content failures reach here; retries are strictly bounded and require the PAT.
+                  if ($fixAttempts -lt $maxRetries -and $env:COPILOT_AGENT_PAT -and $headRef) {
+                    $fixAttempts++
+                    Write-Host "Gate failed ($($g.reason)). Launching auto-fix attempt $fixAttempts/$maxRetries."
+                    Add-Summary "> [!NOTE]"
+                    Add-Summary "> **Auto-fix attempt $fixAttempts** requested from Copilot ($($g.reason))  "
+                    Add-Summary "> run_id: $($env:GITHUB_RUN_ID)"
+
+                    ./scripts/Start-CopilotReportTask.ps1 `
+                      -Owner $env:OWNER -Repo $env:REPO -BaseRef $default `
+                      -HeadRef $headRef -ExtraInstructions $g.feedback `
+                      -TimeoutMinutes 20 -PollSeconds 20 -NoGitHubOutput `
+                      -OutputPath "$env:RUNNER_TEMP/agent-fix.json"
+
+                    $fixOk = $false
+                    try { $fm = Get-Content "$env:RUNNER_TEMP/agent-fix.json" -Raw -Encoding UTF8 | ConvertFrom-Json; $fixOk = [bool]$fm.success } catch {}
+                    if (-not $fixOk) { $reason = "auto-fix task did not succeed ($($g.reason))"; break }
+                    if (-not (Get-BodyFromBranch $headRef)) { $reason = 'auto-fix produced no body.json'; break }
+                    continue
                   }
-                  if ($changed -notmatch '(?m)^output/body\.json$') {
-                    $gatesOk = $false; $reason = 'PR diff does not include output/body.json'
-                  } else {
-                    pwsh -NoProfile -File scripts/ci/Test-BodyAllowlist.ps1 -ChangedFiles $changed
-                    if ($LASTEXITCODE -ne 0) { $gatesOk = $false; $reason = 'allowlist gate failed' }
-                  }
-                }
-
-                # --- Gate 2: factcheck ---
-                if ($gatesOk) {
-                  pwsh -NoProfile -File scripts/ci/Test-BodyFactcheck.ps1 -BodyJson $tmpBody -FactsJson output/facts.json
-                  if ($LASTEXITCODE -ne 0) { $gatesOk = $false; $reason = 'factcheck gate failed' }
-                }
-
-                # --- Gate 3: sanitize ---
-                if ($gatesOk) {
-                  pwsh -NoProfile -File scripts/ci/Test-BodySanitize.ps1 -BodyJson $tmpBody
-                  if ($LASTEXITCODE -ne 0) { $gatesOk = $false; $reason = 'sanitize gate failed' }
-                }
-
-                # --- Render AI narrative from the validated temp body ---
-                if ($gatesOk) {
-                  try {
-                    ./scripts/New-AzComprehensiveAdminReport.ps1 -BodyJson $tmpBody -RunId $env:GITHUB_RUN_ID
-                    if (-not (Test-Path output/comprehensive-report.html)) { throw 'AI render produced no HTML' }
-                    $mode = 'ai'
-                  } catch {
-                    $reason = "AI render failed: $($_.Exception.Message)"
-                    # Re-render deterministic fallback to guarantee a clean HTML.
-                    ./scripts/New-AzComprehensiveAdminReport.ps1 -RunId $env:GITHUB_RUN_ID
-                    $mode = 'fallback'
-                  }
+                  break
                 }
               }
             } else {
@@ -192,19 +236,20 @@ jobs:
           }
 
           if ($mode -eq 'ai') {
+            $fixNote = if ($fixAttempts -gt 0) { " (auto-fixed after $fixAttempts retry)" } else { '' }
             Add-Summary "> [!NOTE]"
-            Add-Summary "> **Report narrative: Copilot Cloud Agent (AI)**  "
+            Add-Summary "> **Report narrative: Copilot Cloud Agent (AI)$fixNote**  "
             Add-Summary "> quality gates: passed  "
             Add-Summary "> run_id: $($env:GITHUB_RUN_ID)"
           } else {
             Add-Summary "> [!WARNING]"
             Add-Summary "> **Report narrative: rule-based fallback**  "
-            Add-Summary "> reason: $reason  "
+            Add-Summary "> reason: $reason (auto-fix attempts: $fixAttempts)  "
             Add-Summary "> run_id: $($env:GITHUB_RUN_ID)"
           }
           # Collapse to a single line so it is safe for the GITHUB_OUTPUT key=value format.
           $reason = ($reason -replace '[\r\n]+', ' ').Trim()
-          Write-Host "render mode = $mode ; reason = $reason ; pr = $prNum"
+          Write-Host "render mode = $mode ; reason = $reason ; pr = $prNum ; fixAttempts = $fixAttempts"
           "mode=$mode"     | Add-Content -Path $env:GITHUB_OUTPUT
           "pr_number=$prNum" | Add-Content -Path $env:GITHUB_OUTPUT
           "reason=$reason" | Add-Content -Path $env:GITHUB_OUTPUT
