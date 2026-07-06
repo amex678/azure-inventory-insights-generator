@@ -14,7 +14,7 @@ name: schedule-canary
 on:
   workflow_dispatch:
   schedule:
-    - cron: '*/15 * * * *'   # 毎時 :00 :15 :30 :45（UTC）。*/5 より間引かれにくい。
+    - cron: '7 */3 * * *'   # 3時間おき :07（UTC 00/03/06/09/12/15/18/21）ホットスロット回避
 
 jobs:
   ping:
