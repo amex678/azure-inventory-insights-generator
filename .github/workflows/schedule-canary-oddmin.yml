@@ -1,0 +1,23 @@
+name: schedule-canary-oddmin
+
+# 識別実験: schedule-canary(*/15, ホットスロット :00/:15/:30/:45) と対で観測する。
+# こちらは奇数分・毎時2回 (:23 :53) でホットスロットを回避。
+# 目的: 「発火しない」の原因が cron 頻度なのか、毎時0分付近の混雑なのかを切り分ける。
+# 本番 azure-report-public.yml が使う 17,47 と同系統の空きスロット戦略。
+# 観測後は削除してよい。編集/リネームは登録リセットになるので触らない。
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '23,53 * * * *'   # 毎時 :23 :53（UTC）。ホットスロット回避の奇数分。
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Report firing info
+        run: |
+          echo "fired_at_utc = $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+          echo "event        = ${{ github.event_name }}"
+          echo "run_id       = ${{ github.run_id }}"
+          echo "::notice title=schedule-canary-oddmin::event=${{ github.event_name }} at $(date -u +'%H:%M:%SZ')"
