@@ -3,9 +3,11 @@ name: Azure Inventory Report - Public OIDC
 on:
   workflow_dispatch:
   schedule:
-    # Daily production run: 02:07 UTC (offset from :00 to dodge the top-of-hour peak).
-    # (Note: each run consumes a Copilot premium request. Daily = ~30 requests/month.)
-    - cron: '7 2 * * *'
+    # Production runs 3x/day, spaced 8h apart, at :07 to dodge the top-of-hour peak.
+    # (Note: each run consumes a Copilot premium request. 3x/day = ~90 requests/month.)
+    - cron: '7 2 * * *'    # 02:07 UTC (11:07 JST)
+    - cron: '7 10 * * *'   # 10:07 UTC (19:07 JST)
+    - cron: '7 18 * * *'   # 18:07 UTC (03:07 JST)
 
 # Single-flight: never run two report generations at once (avoids duplicate agent tasks).
 concurrency:
