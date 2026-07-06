@@ -1,0 +1,28 @@
+name: schedule-canary
+
+# 目的: GitHub Actions の schedule トリガーが「そもそも発火するか」を切り分けるための最小テスト。
+# 中身は hello-world 相当。発火の可否・頻度・遅延だけを観測する。
+#
+# 重要な運用ルール:
+#   1. このファイルは main（デフォルトブランチ）に置くこと。schedule は main のファイルしか動かない。
+#   2. コミット後は数時間 "触らない"。cron を編集するたびに登録がリセットされ直近スロットを取りこぼす。
+#   3. 観測が済んだら削除してよい（本番の週次ジョブとは無関係）。
+#
+# 注意: GitHub の schedule は best-effort。高頻度 cron や毎時0分付近は間引き/遅延されやすい。
+#       */15 でも一部スロットが飛ぶのは正常。何回中何回発火したか（間引き率）を見るのが目的。
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/15 * * * *'   # 毎時 :00 :15 :30 :45（UTC）。*/5 より間引かれにくい。
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Report firing info
+        run: |
+          echo "fired_at_utc = $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+          echo "event        = ${{ github.event_name }}"
+          echo "run_id       = ${{ github.run_id }}"
+          echo "::notice title=schedule-canary::event=${{ github.event_name }} at $(date -u +'%H:%M:%SZ')"
