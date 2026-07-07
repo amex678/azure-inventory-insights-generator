@@ -2,9 +2,9 @@
   "meta": {
     "subscriptionName": "ME-MngEnvMCAP720509-tamemiya-1",
     "subscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
-    "generatedAt": "2026-07-07T12:39:40Z",
+    "generatedAt": "2026-07-07T20:12:07Z",
     "reportDate": "2026-07-07",
-    "runId": "28866646780",
+    "runId": "28895246799",
     "schemaVersion": 1
   },
   "facts": {
@@ -39,23 +39,23 @@
     "defender.lowCount": 39,
     "defender.evaluatedCount": 314,
     "defender.secureScorePct": 31.8,
-    "advisor.total": 85,
-    "advisor.costCount": 3,
+    "advisor.total": 90,
+    "advisor.costCount": 2,
     "advisor.operationalCount": 14,
     "advisor.performanceCount": 0,
-    "advisor.highAvailabilityCount": 20,
+    "advisor.highAvailabilityCount": 26,
     "advisor.securityCount": 48,
-    "advisor.highCount": 27,
-    "advisor.mediumCount": 39,
+    "advisor.highCount": 26,
+    "advisor.mediumCount": 45,
     "advisor.lowCount": 19
   },
   "scores": {
     "nsg": 90,
     "rbac": 0,
     "defender": 31.8,
-    "advisor": 19,
+    "advisor": 22,
     "governance": 45.1,
-    "overall": 37.0,
+    "overall": 38.0,
     "verdict": "critical",
     "verdictLabel": "重大な是正が必要"
   },
@@ -63,7 +63,7 @@
     {
       "id": "overall",
       "label": "総合スコア",
-      "value": 37.0,
+      "value": 38.0,
       "unit": "/100",
       "severity": "high",
       "sub": "重大な是正が必要",
@@ -99,10 +99,10 @@
     {
       "id": "advisorHigh",
       "label": "Advisor High",
-      "value": 27,
+      "value": 26,
       "unit": "件",
       "severity": "high",
-      "sub": "総 85 件",
+      "sub": "総 90 件",
       "fact_id": "advisor.highCount"
     },
     {
