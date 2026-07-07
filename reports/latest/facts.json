@@ -1,0 +1,285 @@
+{
+  "meta": {
+    "subscriptionName": "ME-MngEnvMCAP720509-tamemiya-1",
+    "subscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
+    "generatedAt": "2026-07-07T06:19:26Z",
+    "reportDate": "2026-07-07",
+    "runId": "28845806872",
+    "schemaVersion": 1
+  },
+  "facts": {
+    "resources.total": 51,
+    "resources.types": 13,
+    "resources.resourceGroups": 7,
+    "resources.locations": 5,
+    "resources.vmCount": 7,
+    "resources.publicIpCount": 2,
+    "resources.storageCount": 2,
+    "resources.lrsStorageCount": 2,
+    "resources.untaggedCount": 28,
+    "resources.tagCoveragePct": 45.1,
+    "rbac.total": 39,
+    "rbac.ownerCount": 12,
+    "rbac.uaaCount": 2,
+    "rbac.servicePrincipalCount": 34,
+    "rbac.userCount": 5,
+    "rbac.orphanCount": 39,
+    "rbac.mgScopeCount": 12,
+    "rbac.ownerMgCount": 9,
+    "nsg.nsgCount": 5,
+    "nsg.ruleCount": 5,
+    "nsg.riskyCount": 0,
+    "nsg.inboundAllowCount": 4,
+    "defender.total": 373,
+    "defender.unhealthyCount": 214,
+    "defender.healthyCount": 100,
+    "defender.notApplicableCount": 59,
+    "defender.highCount": 66,
+    "defender.mediumCount": 109,
+    "defender.lowCount": 39,
+    "defender.evaluatedCount": 314,
+    "defender.secureScorePct": 31.8,
+    "advisor.total": 89,
+    "advisor.costCount": 4,
+    "advisor.operationalCount": 14,
+    "advisor.performanceCount": 0,
+    "advisor.highAvailabilityCount": 25,
+    "advisor.securityCount": 46,
+    "advisor.highCount": 27,
+    "advisor.mediumCount": 43,
+    "advisor.lowCount": 19
+  },
+  "scores": {
+    "nsg": 90,
+    "rbac": 0,
+    "defender": 31.8,
+    "advisor": 19,
+    "governance": 45.1,
+    "overall": 37.0,
+    "verdict": "critical",
+    "verdictLabel": "重大な是正が必要"
+  },
+  "kpi": [
+    {
+      "id": "overall",
+      "label": "総合スコア",
+      "value": 37.0,
+      "unit": "/100",
+      "severity": "high",
+      "sub": "重大な是正が必要",
+      "fact_id": "scores.overall"
+    },
+    {
+      "id": "riskyNsg",
+      "label": "高リスク NSG",
+      "value": 0,
+      "unit": "件",
+      "severity": "ok",
+      "sub": "22/3389 公開",
+      "fact_id": "nsg.riskyCount"
+    },
+    {
+      "id": "owner",
+      "label": "Owner 付与",
+      "value": 12,
+      "unit": "件",
+      "severity": "high",
+      "sub": "MG スコープ 9",
+      "fact_id": "rbac.ownerCount"
+    },
+    {
+      "id": "secureScore",
+      "label": "Secure Score",
+      "value": 31.8,
+      "unit": "%",
+      "severity": "high",
+      "sub": "Healthy 100 / 314",
+      "fact_id": "defender.secureScorePct"
+    },
+    {
+      "id": "advisorHigh",
+      "label": "Advisor High",
+      "value": 27,
+      "unit": "件",
+      "severity": "high",
+      "sub": "総 89 件",
+      "fact_id": "advisor.highCount"
+    },
+    {
+      "id": "tagCoverage",
+      "label": "タグ付与率",
+      "value": 45.1,
+      "unit": "%",
+      "severity": "high",
+      "sub": "未付与 28",
+      "fact_id": "resources.tagCoveragePct"
+    }
+  ],
+  "highlights": {
+    "concerns": [
+      {
+        "id": "concern.ownerMg",
+        "severity": "high",
+        "fact_ids": [
+          "rbac.ownerMgCount"
+        ],
+        "topic": "特権境界"
+      },
+      {
+        "id": "concern.orphan",
+        "severity": "medium",
+        "fact_ids": [
+          "rbac.orphanCount"
+        ],
+        "topic": "監査追跡性"
+      },
+      {
+        "id": "concern.defenderHigh",
+        "severity": "high",
+        "fact_ids": [
+          "defender.highCount",
+          "defender.secureScorePct"
+        ],
+        "topic": "セキュリティ態勢"
+      },
+      {
+        "id": "concern.advisorHigh",
+        "severity": "medium",
+        "fact_ids": [
+          "advisor.highCount",
+          "advisor.highAvailabilityCount",
+          "advisor.securityCount",
+          "advisor.operationalCount"
+        ],
+        "topic": "最適化機会"
+      },
+      {
+        "id": "concern.tagCoverage",
+        "severity": "medium",
+        "fact_ids": [
+          "resources.tagCoveragePct"
+        ],
+        "topic": "ガバナンス"
+      },
+      {
+        "id": "concern.lrsStorage",
+        "severity": "medium",
+        "fact_ids": [
+          "resources.storageCount",
+          "resources.lrsStorageCount"
+        ],
+        "topic": "可用性"
+      }
+    ],
+    "strengths": [
+      {
+        "id": "strength.noRiskyNsg",
+        "fact_ids": [
+          "nsg.nsgCount",
+          "nsg.riskyCount"
+        ]
+      },
+      {
+        "id": "strength.defenderEnabled",
+        "fact_ids": [
+          "defender.total",
+          "defender.highCount",
+          "defender.mediumCount",
+          "defender.lowCount"
+        ]
+      },
+      {
+        "id": "strength.advisorActive",
+        "fact_ids": [
+          "advisor.total"
+        ]
+      },
+      {
+        "id": "strength.smallVmFleet",
+        "fact_ids": [
+          "resources.vmCount"
+        ]
+      }
+    ],
+    "focus": [
+      {
+        "id": "focus.rbac",
+        "window": "Week 1-2",
+        "fact_ids": [
+          "rbac.ownerMgCount",
+          "rbac.orphanCount"
+        ]
+      },
+      {
+        "id": "focus.defender",
+        "window": "Week 2-3",
+        "fact_ids": [
+          "defender.highCount"
+        ]
+      },
+      {
+        "id": "focus.advisor",
+        "window": "Week 3-4",
+        "fact_ids": [
+          "advisor.highCount"
+        ]
+      },
+      {
+        "id": "focus.governance",
+        "window": "Week 2-4",
+        "fact_ids": [
+          "resources.tagCoveragePct"
+        ]
+      }
+    ]
+  },
+  "topRisks": [
+    {
+      "id": "risk.ownerMg",
+      "severity": "high",
+      "score": 90,
+      "fact_ids": [
+        "rbac.ownerMgCount"
+      ]
+    },
+    {
+      "id": "risk.defenderHigh",
+      "severity": "high",
+      "score": 80,
+      "fact_ids": [
+        "defender.highCount"
+      ]
+    },
+    {
+      "id": "risk.orphan",
+      "severity": "medium",
+      "score": 60,
+      "fact_ids": [
+        "rbac.orphanCount"
+      ]
+    },
+    {
+      "id": "risk.advisorHigh",
+      "severity": "medium",
+      "score": 50,
+      "fact_ids": [
+        "advisor.highCount"
+      ]
+    },
+    {
+      "id": "risk.lrsStorage",
+      "severity": "medium",
+      "score": 40,
+      "fact_ids": [
+        "resources.lrsStorageCount"
+      ]
+    }
+  ],
+  "samples": {
+    "topResourceType": {
+      "name": "Microsoft.Compute/virtualMachines/extensions",
+      "count": 8
+    },
+    "riskyNsgRules": []
+  }
+}
