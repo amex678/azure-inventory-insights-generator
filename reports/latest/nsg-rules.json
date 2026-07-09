@@ -88,5 +88,41 @@
     "Description": null,
     "IsRiskyMgmtFromInternet": false,
     "NsgId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/rg-inventory-demo/providers/Microsoft.Network/networkSecurityGroups/nsg-demo-web"
+  },
+  {
+    "NsgName": "nsg-nwri-workload-jpe",
+    "ResourceGroupName": "rg-nwri-jpe-20260709",
+    "Location": "japaneast",
+    "AssociationCount": 1,
+    "RuleName": "AllowVnetInbound",
+    "Priority": 100,
+    "Direction": "Inbound",
+    "Access": "Allow",
+    "Protocol": "*",
+    "SourceAddressPrefix": "VirtualNetwork",
+    "SourcePortRange": "*",
+    "DestinationAddressPrefix": "VirtualNetwork",
+    "DestinationPortRange": "*",
+    "Description": "Allows private VNet-to-VNet traffic for Rule Impact Analyzer demo flows.",
+    "IsRiskyMgmtFromInternet": false,
+    "NsgId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/rg-nwri-jpe-20260709/providers/Microsoft.Network/networkSecurityGroups/nsg-nwri-workload-jpe"
+  },
+  {
+    "NsgName": "nsg-nwri-workload-jpe",
+    "ResourceGroupName": "rg-nwri-jpe-20260709",
+    "Location": "japaneast",
+    "AssociationCount": 1,
+    "RuleName": "DenyInternetInbound",
+    "Priority": 200,
+    "Direction": "Inbound",
+    "Access": "Deny",
+    "Protocol": "*",
+    "SourceAddressPrefix": "Internet",
+    "SourcePortRange": "*",
+    "DestinationAddressPrefix": "*",
+    "DestinationPortRange": "*",
+    "Description": "Explicitly denies inbound internet traffic for the demo subnet.",
+    "IsRiskyMgmtFromInternet": false,
+    "NsgId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/rg-nwri-jpe-20260709/providers/Microsoft.Network/networkSecurityGroups/nsg-nwri-workload-jpe"
   }
 ]
