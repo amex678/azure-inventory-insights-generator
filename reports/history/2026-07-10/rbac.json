@@ -310,20 +310,6 @@
   {
     "DisplayName": null,
     "SignInName": null,
-    "ObjectId": "14f720fd-fd42-429c-b3e1-b865c7f3bf93",
-    "ObjectType": "User",
-    "RoleDefinitionName": "Foundry User",
-    "RoleDefinitionId": "53ca6127-db72-4b80-b1b0-d745d6d5456d",
-    "Scope": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/test01/providers/Microsoft.CognitiveServices/accounts/Foundry-test-csa",
-    "ScopeKind": "Resource",
-    "ConditionVersion": null,
-    "Condition": null,
-    "Description": "Azure AI User role granted to the resource creator at create time.",
-    "RoleAssignmentId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/test01/providers/Microsoft.CognitiveServices/accounts/Foundry-test-csa/providers/Microsoft.Authorization/roleAssignments/32e17036-c04f-57d1-97f4-05ba46457357"
-  },
-  {
-    "DisplayName": null,
-    "SignInName": null,
     "ObjectId": "9a2d1b4b-4cf1-4ff7-afe0-4ce2358a707b",
     "ObjectType": "ServicePrincipal",
     "RoleDefinitionName": "Reader",

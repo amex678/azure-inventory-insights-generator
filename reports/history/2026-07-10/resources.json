@@ -143,17 +143,6 @@
     "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/rg-inventory-demo/providers/Microsoft.Network/networkInterfaces/nic-vm-demo-db-01"
   },
   {
-    "Name": "nic-vm-demo-app-02",
-    "ResourceType": "Microsoft.Network/networkInterfaces",
-    "ResourceGroupName": "rg-inventory-demo",
-    "Location": "japaneast",
-    "SubscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
-    "Sku": null,
-    "Kind": null,
-    "Tags": "project=AzureInventoryDemo;env=demo;owner=demo",
-    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/rg-inventory-demo/providers/Microsoft.Network/networkInterfaces/nic-vm-demo-app-02"
-  },
-  {
     "Name": "nic-vm-demo-app-01",
     "ResourceType": "Microsoft.Network/networkInterfaces",
     "ResourceGroupName": "rg-inventory-demo",
@@ -163,6 +152,17 @@
     "Kind": null,
     "Tags": "project=AzureInventoryDemo;env=demo;owner=demo",
     "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/rg-inventory-demo/providers/Microsoft.Network/networkInterfaces/nic-vm-demo-app-01"
+  },
+  {
+    "Name": "nic-vm-demo-app-02",
+    "ResourceType": "Microsoft.Network/networkInterfaces",
+    "ResourceGroupName": "rg-inventory-demo",
+    "Location": "japaneast",
+    "SubscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
+    "Sku": null,
+    "Kind": null,
+    "Tags": "project=AzureInventoryDemo;env=demo;owner=demo",
+    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/rg-inventory-demo/providers/Microsoft.Network/networkInterfaces/nic-vm-demo-app-02"
   },
   {
     "Name": "nic-vm-demo-web-01",
@@ -462,83 +462,6 @@
     "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/rg-pw-ops-dev-jpe-27161/providers/Microsoft.Network/networkSecurityGroups/vm-pw-ops-dev-jpw-27161VNET-vm-pw-ops-dev-jpw-27161Subnet-nsg-japanwest"
   },
   {
-    "Name": "vmprovjpe202607091459-nsg",
-    "ResourceType": "Microsoft.Network/networkSecurityGroups",
-    "ResourceGroupName": "rg-vmprov-jpe-20260709-1459",
-    "Location": "japaneast",
-    "SubscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
-    "Sku": null,
-    "Kind": null,
-    "Tags": "purpose=demo;demoTheme=virtual-machine-provision;createdBy=GitHubCopilotBrowserAutomation;deleteAfter=2026-07-16",
-    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/rg-vmprov-jpe-20260709-1459/providers/Microsoft.Network/networkSecurityGroups/vmprovjpe202607091459-nsg"
-  },
-  {
-    "Name": "vmprovjpe202607091459-vnet",
-    "ResourceType": "Microsoft.Network/virtualNetworks",
-    "ResourceGroupName": "rg-vmprov-jpe-20260709-1459",
-    "Location": "japaneast",
-    "SubscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
-    "Sku": null,
-    "Kind": null,
-    "Tags": "deleteAfter=2026-07-16;createdBy=GitHubCopilotBrowserAutomation;demoTheme=virtual-machine-provision;purpose=demo",
-    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/rg-vmprov-jpe-20260709-1459/providers/Microsoft.Network/virtualNetworks/vmprovjpe202607091459-vnet"
-  },
-  {
-    "Name": "vmprovjpe202607091459-nic",
-    "ResourceType": "Microsoft.Network/networkInterfaces",
-    "ResourceGroupName": "rg-vmprov-jpe-20260709-1459",
-    "Location": "japaneast",
-    "SubscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
-    "Sku": null,
-    "Kind": null,
-    "Tags": "purpose=demo;demoTheme=virtual-machine-provision;createdBy=GitHubCopilotBrowserAutomation;deleteAfter=2026-07-16",
-    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/rg-vmprov-jpe-20260709-1459/providers/Microsoft.Network/networkInterfaces/vmprovjpe202607091459-nic"
-  },
-  {
-    "Name": "vmprovjpe202607091459",
-    "ResourceType": "Microsoft.Compute/virtualMachines",
-    "ResourceGroupName": "rg-vmprov-jpe-20260709-1459",
-    "Location": "japaneast",
-    "SubscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
-    "Sku": null,
-    "Kind": null,
-    "Tags": "purpose=demo;demoTheme=virtual-machine-provision;createdBy=GitHubCopilotBrowserAutomation;deleteAfter=2026-07-16",
-    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/rg-vmprov-jpe-20260709-1459/providers/Microsoft.Compute/virtualMachines/vmprovjpe202607091459"
-  },
-  {
-    "Name": "vmprovjpe202607091459_OsDisk_1_b5a2f2730c4040d6b4ee67d46a191a9a",
-    "ResourceType": "Microsoft.Compute/disks",
-    "ResourceGroupName": "RG-VMPROV-JPE-20260709-1459",
-    "Location": "japaneast",
-    "SubscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
-    "Sku": "Standard_LRS",
-    "Kind": null,
-    "Tags": "",
-    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/RG-VMPROV-JPE-20260709-1459/providers/Microsoft.Compute/disks/vmprovjpe202607091459_OsDisk_1_b5a2f2730c4040d6b4ee67d46a191a9a"
-  },
-  {
-    "Name": "vmprovjpe202607091459/MDE.Linux",
-    "ResourceType": "Microsoft.Compute/virtualMachines/extensions",
-    "ResourceGroupName": "RG-VMPROV-JPE-20260709-1459",
-    "Location": "japaneast",
-    "SubscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
-    "Sku": null,
-    "Kind": null,
-    "Tags": "",
-    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/RG-VMPROV-JPE-20260709-1459/providers/Microsoft.Compute/virtualMachines/vmprovjpe202607091459/extensions/MDE.Linux"
-  },
-  {
-    "Name": "vmprovjpe202607091459-vnet-default-nsg-japaneast",
-    "ResourceType": "Microsoft.Network/networkSecurityGroups",
-    "ResourceGroupName": "rg-vmprov-jpe-20260709-1459",
-    "Location": "japaneast",
-    "SubscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
-    "Sku": null,
-    "Kind": null,
-    "Tags": "createdBy=GitHubCopilotBrowserAutomation;purpose=demo;deleteAfter=2026-07-16;demoTheme=virtual-machine-provision",
-    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/rg-vmprov-jpe-20260709-1459/providers/Microsoft.Network/networkSecurityGroups/vmprovjpe202607091459-vnet-default-nsg-japaneast"
-  },
-  {
     "Name": "nsg-nwri-workload-jpe",
     "ResourceType": "Microsoft.Network/networkSecurityGroups",
     "ResourceGroupName": "rg-nwri-jpe-20260709",
@@ -572,17 +495,6 @@
     "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/rg-nwri-jpe-20260709/providers/Microsoft.Network/virtualNetworks/vnet-nwri-jpe"
   },
   {
-    "Name": "vm-nwri-src-jpe-nic",
-    "ResourceType": "Microsoft.Network/networkInterfaces",
-    "ResourceGroupName": "rg-nwri-jpe-20260709",
-    "Location": "japaneast",
-    "SubscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
-    "Sku": null,
-    "Kind": null,
-    "Tags": "purpose=demo;owner=csa;demoTheme=network-watcher-rule-impact;createdBy=GitHubCopilotBrowserAutomation;deleteAfter=2026-07-31",
-    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/rg-nwri-jpe-20260709/providers/Microsoft.Network/networkInterfaces/vm-nwri-src-jpe-nic"
-  },
-  {
     "Name": "vm-nwri-dst-jpe-nic",
     "ResourceType": "Microsoft.Network/networkInterfaces",
     "ResourceGroupName": "rg-nwri-jpe-20260709",
@@ -592,6 +504,17 @@
     "Kind": null,
     "Tags": "purpose=demo;owner=csa;demoTheme=network-watcher-rule-impact;createdBy=GitHubCopilotBrowserAutomation;deleteAfter=2026-07-31",
     "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/rg-nwri-jpe-20260709/providers/Microsoft.Network/networkInterfaces/vm-nwri-dst-jpe-nic"
+  },
+  {
+    "Name": "vm-nwri-src-jpe-nic",
+    "ResourceType": "Microsoft.Network/networkInterfaces",
+    "ResourceGroupName": "rg-nwri-jpe-20260709",
+    "Location": "japaneast",
+    "SubscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
+    "Sku": null,
+    "Kind": null,
+    "Tags": "purpose=demo;owner=csa;demoTheme=network-watcher-rule-impact;createdBy=GitHubCopilotBrowserAutomation;deleteAfter=2026-07-31",
+    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/rg-nwri-jpe-20260709/providers/Microsoft.Network/networkInterfaces/vm-nwri-src-jpe-nic"
   },
   {
     "Name": "vm-nwri-dst-jpe",
@@ -735,27 +658,5 @@
     "Kind": null,
     "Tags": "",
     "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/rg-nwri-jpe-20260709/providers/Microsoft.EventGrid/systemTopics/nwrilkb2l5f6fuhds-b76efd16-f2b5-4e7b-8843-59b265acf065"
-  },
-  {
-    "Name": "Foundry-test-csa",
-    "ResourceType": "Microsoft.CognitiveServices/accounts",
-    "ResourceGroupName": "test01",
-    "Location": "eastus2",
-    "SubscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
-    "Sku": "S0",
-    "Kind": "AIServices",
-    "Tags": "",
-    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/test01/providers/Microsoft.CognitiveServices/accounts/Foundry-test-csa"
-  },
-  {
-    "Name": "Foundry-test-csa/proj-default",
-    "ResourceType": "Microsoft.CognitiveServices/accounts/projects",
-    "ResourceGroupName": "test01",
-    "Location": "eastus2",
-    "SubscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
-    "Sku": null,
-    "Kind": "AIServices",
-    "Tags": "",
-    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/test01/providers/Microsoft.CognitiveServices/accounts/Foundry-test-csa/projects/proj-default"
   }
 ]

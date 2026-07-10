@@ -2,59 +2,59 @@
   "meta": {
     "subscriptionName": "ME-MngEnvMCAP720509-tamemiya-1",
     "subscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
-    "generatedAt": "2026-07-10T06:16:20Z",
+    "generatedAt": "2026-07-10T12:38:03Z",
     "reportDate": "2026-07-10",
-    "runId": "29073244940",
+    "runId": "29093052184",
     "schemaVersion": 1
   },
   "facts": {
-    "resources.total": 69,
-    "resources.types": 17,
-    "resources.resourceGroups": 8,
-    "resources.locations": 5,
-    "resources.vmCount": 9,
+    "resources.total": 60,
+    "resources.types": 15,
+    "resources.resourceGroups": 6,
+    "resources.locations": 4,
+    "resources.vmCount": 8,
     "resources.publicIpCount": 2,
     "resources.storageCount": 3,
     "resources.lrsStorageCount": 3,
-    "resources.untaggedCount": 34,
-    "resources.tagCoveragePct": 50.7,
-    "rbac.total": 40,
+    "resources.untaggedCount": 30,
+    "resources.tagCoveragePct": 50.0,
+    "rbac.total": 39,
     "rbac.ownerCount": 13,
     "rbac.uaaCount": 2,
     "rbac.servicePrincipalCount": 35,
-    "rbac.userCount": 5,
-    "rbac.orphanCount": 40,
+    "rbac.userCount": 4,
+    "rbac.orphanCount": 39,
     "rbac.mgScopeCount": 13,
     "rbac.ownerMgCount": 10,
     "nsg.nsgCount": 6,
     "nsg.ruleCount": 7,
     "nsg.riskyCount": 0,
     "nsg.inboundAllowCount": 5,
-    "defender.total": 425,
+    "defender.total": 409,
     "defender.unhealthyCount": 221,
-    "defender.healthyCount": 121,
-    "defender.notApplicableCount": 83,
+    "defender.healthyCount": 113,
+    "defender.notApplicableCount": 75,
     "defender.highCount": 81,
     "defender.mediumCount": 121,
     "defender.lowCount": 19,
-    "defender.evaluatedCount": 342,
-    "defender.secureScorePct": 35.4,
-    "advisor.total": 107,
+    "defender.evaluatedCount": 334,
+    "defender.secureScorePct": 33.8,
+    "advisor.total": 106,
     "advisor.costCount": 0,
     "advisor.operationalCount": 20,
     "advisor.performanceCount": 0,
-    "advisor.highAvailabilityCount": 35,
+    "advisor.highAvailabilityCount": 34,
     "advisor.securityCount": 52,
     "advisor.highCount": 32,
     "advisor.mediumCount": 57,
-    "advisor.lowCount": 18
+    "advisor.lowCount": 17
   },
   "scores": {
     "nsg": 90,
     "rbac": 0,
-    "defender": 35.4,
+    "defender": 33.8,
     "advisor": 4,
-    "governance": 50.7,
+    "governance": 50.0,
     "overall": 36.0,
     "verdict": "critical",
     "verdictLabel": "重大な是正が必要"
@@ -90,10 +90,10 @@
     {
       "id": "secureScore",
       "label": "Secure Score",
-      "value": 35.4,
+      "value": 33.8,
       "unit": "%",
       "severity": "high",
-      "sub": "Healthy 121 / 342",
+      "sub": "Healthy 113 / 334",
       "fact_id": "defender.secureScorePct"
     },
     {
@@ -102,16 +102,16 @@
       "value": 32,
       "unit": "件",
       "severity": "high",
-      "sub": "総 107 件",
+      "sub": "総 106 件",
       "fact_id": "advisor.highCount"
     },
     {
       "id": "tagCoverage",
       "label": "タグ付与率",
-      "value": 50.7,
+      "value": 50.0,
       "unit": "%",
       "severity": "medium",
-      "sub": "未付与 34",
+      "sub": "未付与 30",
       "fact_id": "resources.tagCoveragePct"
     }
   ],
@@ -278,7 +278,7 @@
   "samples": {
     "topResourceType": {
       "name": "Microsoft.Compute/virtualMachines/extensions",
-      "count": 11
+      "count": 10
     },
     "riskyNsgRules": []
   }
