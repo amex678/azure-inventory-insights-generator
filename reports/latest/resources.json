@@ -658,5 +658,16 @@
     "Kind": null,
     "Tags": "",
     "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/rg-nwri-jpe-20260709/providers/Microsoft.EventGrid/systemTopics/nwrilkb2l5f6fuhds-b76efd16-f2b5-4e7b-8843-59b265acf065"
+  },
+  {
+    "Name": "nsg-nwri-candidate-jpe",
+    "ResourceType": "Microsoft.Network/networkSecurityGroups",
+    "ResourceGroupName": "rg-nwri-jpe-20260709",
+    "Location": "japaneast",
+    "SubscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
+    "Sku": null,
+    "Kind": null,
+    "Tags": "purpose=demo;createdBy=GitHubCopilotBrowserAutomation",
+    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/rg-nwri-jpe-20260709/providers/Microsoft.Network/networkSecurityGroups/nsg-nwri-candidate-jpe"
   }
 ]
