@@ -2224,22 +2224,6 @@
     "Id": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-pw-ops-dev-jpe-27161/providers/microsoft.compute/disks/vm-pw-ops-dev-jpw-27161_osdisk_1_d208705db396475a997b7edc60a576f9/providers/Microsoft.Advisor/recommendations/091474a3a01853bab7a25ae10ae9c13e8cfdeaf0caff8506fcf21f10495f4ff8"
   },
   {
-    "Category": "HighAvailability",
-    "Impact": "Medium",
-    "Risk": null,
-    "Problem": "Migrate workload to Virtual Machine Scale Sets Flex",
-    "Solution": "Migrate workload to Virtual Machine Scale Sets Flex",
-    "ImpactedField": "MICROSOFT.COMPUTE/VIRTUALMACHINES",
-    "ImpactedValue": "mobvmghc-vm-yypwhhh6st5ky",
-    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-mobile-ghc-cli/providers/microsoft.compute/virtualmachines/mobvmghc-vm-yypwhhh6st5ky",
-    "ResourceName": "mobvmghc-vm-yypwhhh6st5ky",
-    "ResourceType": "MICROSOFT.COMPUTE/VIRTUALMACHINES",
-    "ResourceGroupName": "rg-mobile-ghc-cli",
-    "LastUpdated": "2026-07-04T09:16:11.5005181Z",
-    "RecommendationId": "b016fcef93161f166db503d26657a740cf9d35d00f815a175b7879fff8da0bb2",
-    "Id": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-mobile-ghc-cli/providers/microsoft.compute/virtualmachines/mobvmghc-vm-yypwhhh6st5ky/providers/Microsoft.Advisor/recommendations/b016fcef93161f166db503d26657a740cf9d35d00f815a175b7879fff8da0bb2"
-  },
-  {
     "Category": "Security",
     "Impact": "High",
     "Risk": null,
@@ -2558,22 +2542,6 @@
     "LastUpdated": "2026-07-09T22:29:49.6839827Z",
     "RecommendationId": "c0a14c2dba3893bcf1d21709fd6d935082b2f9745e7608059cce4a9180000100",
     "Id": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-nwri-jpe-20260709/providers/microsoft.compute/virtualmachines/vm-nwri-src-jpe/providers/Microsoft.Advisor/recommendations/c0a14c2dba3893bcf1d21709fd6d935082b2f9745e7608059cce4a9180000100"
-  },
-  {
-    "Category": "HighAvailability",
-    "Impact": "Medium",
-    "Risk": null,
-    "Problem": "Migrate workload to Virtual Machine Scale Sets Flex",
-    "Solution": "Migrate workload to Virtual Machine Scale Sets Flex",
-    "ImpactedField": "MICROSOFT.COMPUTE/VIRTUALMACHINES",
-    "ImpactedValue": "vmprovjpe202607091459",
-    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-vmprov-jpe-20260709-1459/providers/microsoft.compute/virtualmachines/vmprovjpe202607091459",
-    "ResourceName": "vmprovjpe202607091459",
-    "ResourceType": "MICROSOFT.COMPUTE/VIRTUALMACHINES",
-    "ResourceGroupName": "rg-vmprov-jpe-20260709-1459",
-    "LastUpdated": "2026-07-09T22:32:33.0961267Z",
-    "RecommendationId": "f350a78b4d4a95e19a7cb0cddd14e49b59b8df418b2b71c16954f7c8d8fb1635",
-    "Id": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-vmprov-jpe-20260709-1459/providers/microsoft.compute/virtualmachines/vmprovjpe202607091459/providers/Microsoft.Advisor/recommendations/f350a78b4d4a95e19a7cb0cddd14e49b59b8df418b2b71c16954f7c8d8fb1635"
   },
   {
     "Category": "Security",
