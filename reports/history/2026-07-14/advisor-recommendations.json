@@ -2256,22 +2256,6 @@
     "Id": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-mobile-ghc-cli/providers/microsoft.compute/virtualmachines/mobvmghc-vm-yypwhhh6st5ky/providers/Microsoft.Advisor/recommendations/ed5b9889f4ac22d2b40d1491da4bed5f74cfc434cfce563e2d2dcf9de821e307"
   },
   {
-    "Category": "OperationalExcellence",
-    "Impact": "Medium",
-    "Risk": null,
-    "Problem": "Enable VM Insights for virtual machines",
-    "Solution": "Enable VM Insights for virtual machines",
-    "ImpactedField": "MICROSOFT.COMPUTE/VIRTUALMACHINES",
-    "ImpactedValue": "mobvmghc-vm-yypwhhh6st5ky",
-    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-mobile-ghc-cli/providers/microsoft.compute/virtualmachines/mobvmghc-vm-yypwhhh6st5ky",
-    "ResourceName": "mobvmghc-vm-yypwhhh6st5ky",
-    "ResourceType": "MICROSOFT.COMPUTE/VIRTUALMACHINES",
-    "ResourceGroupName": "rg-mobile-ghc-cli",
-    "LastUpdated": "2026-07-04T11:15:51.9141664Z",
-    "RecommendationId": "669966216432fb7945a18cfc3a365fea662d60f7f19182b1847afc8cf2bdd34c",
-    "Id": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-mobile-ghc-cli/providers/microsoft.compute/virtualmachines/mobvmghc-vm-yypwhhh6st5ky/providers/Microsoft.Advisor/recommendations/669966216432fb7945a18cfc3a365fea662d60f7f19182b1847afc8cf2bdd34c"
-  },
-  {
     "Category": "Security",
     "Impact": "Low",
     "Risk": null,
@@ -2672,22 +2656,6 @@
     "Id": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-nwri-jpe-20260709/providers/microsoft.compute/virtualmachines/vm-nwri-dst-jpe/providers/Microsoft.Advisor/recommendations/aed1bb6599aa0fabb5f4615617248ecc37e85dc1c59454f90e7e5331acb34a17"
   },
   {
-    "Category": "OperationalExcellence",
-    "Impact": "Medium",
-    "Risk": null,
-    "Problem": "Enable VM Insights for virtual machines",
-    "Solution": "Enable VM Insights for virtual machines",
-    "ImpactedField": "MICROSOFT.COMPUTE/VIRTUALMACHINES",
-    "ImpactedValue": "vmprovjpe202607091459",
-    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-vmprov-jpe-20260709-1459/providers/microsoft.compute/virtualmachines/vmprovjpe202607091459",
-    "ResourceName": "vmprovjpe202607091459",
-    "ResourceType": "MICROSOFT.COMPUTE/VIRTUALMACHINES",
-    "ResourceGroupName": "rg-vmprov-jpe-20260709-1459",
-    "LastUpdated": "2026-07-10T04:57:43.11107Z",
-    "RecommendationId": "3dfa17f08423b86dc622e5eab40c8217a7375c7a987c0b63599ecf14bd48879b",
-    "Id": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-vmprov-jpe-20260709-1459/providers/microsoft.compute/virtualmachines/vmprovjpe202607091459/providers/Microsoft.Advisor/recommendations/3dfa17f08423b86dc622e5eab40c8217a7375c7a987c0b63599ecf14bd48879b"
-  },
-  {
     "Category": "Security",
     "Impact": "Medium",
     "Risk": null,
@@ -2942,5 +2910,37 @@
     "LastUpdated": "2026-07-13T10:11:39.2471618Z",
     "RecommendationId": "13794fdcd2fba07ae0d6779461758a3eb12a0287d801277aaa4fdc6d7cdb01fa",
     "Id": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-nwri-jpe-20260709/providers/microsoft.network/virtualnetworks/vnet-nwri-jpe/providers/Microsoft.Advisor/recommendations/13794fdcd2fba07ae0d6779461758a3eb12a0287d801277aaa4fdc6d7cdb01fa"
+  },
+  {
+    "Category": "HighAvailability",
+    "Impact": "Low",
+    "Risk": null,
+    "Problem": "Convert Standard to Premium disk for higher uptime",
+    "Solution": "Convert Standard to Premium disk for higher uptime",
+    "ImpactedField": "MICROSOFT.COMPUTE/VIRTUALMACHINES",
+    "ImpactedValue": "vm-nwri-src-jpe",
+    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-nwri-jpe-20260709/providers/microsoft.compute/virtualmachines/vm-nwri-src-jpe",
+    "ResourceName": "vm-nwri-src-jpe",
+    "ResourceType": "MICROSOFT.COMPUTE/VIRTUALMACHINES",
+    "ResourceGroupName": "rg-nwri-jpe-20260709",
+    "LastUpdated": "2026-07-14T08:18:00.7485991Z",
+    "RecommendationId": "40699b3e4c2f91560ff02d2608e75b8c236177a0c1a069a3a56a7ff97fbaaff5",
+    "Id": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-nwri-jpe-20260709/providers/microsoft.compute/virtualmachines/vm-nwri-src-jpe/providers/Microsoft.Advisor/recommendations/40699b3e4c2f91560ff02d2608e75b8c236177a0c1a069a3a56a7ff97fbaaff5"
+  },
+  {
+    "Category": "HighAvailability",
+    "Impact": "Low",
+    "Risk": null,
+    "Problem": "Convert Standard to Premium disk for higher uptime",
+    "Solution": "Convert Standard to Premium disk for higher uptime",
+    "ImpactedField": "MICROSOFT.COMPUTE/VIRTUALMACHINES",
+    "ImpactedValue": "vm-nwri-dst-jpe",
+    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-nwri-jpe-20260709/providers/microsoft.compute/virtualmachines/vm-nwri-dst-jpe",
+    "ResourceName": "vm-nwri-dst-jpe",
+    "ResourceType": "MICROSOFT.COMPUTE/VIRTUALMACHINES",
+    "ResourceGroupName": "rg-nwri-jpe-20260709",
+    "LastUpdated": "2026-07-14T08:18:00.9498921Z",
+    "RecommendationId": "e840dbb7443be62657631b105ca603bc8564d38759ebd3953abd4b8c1fe84c42",
+    "Id": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-nwri-jpe-20260709/providers/microsoft.compute/virtualmachines/vm-nwri-dst-jpe/providers/Microsoft.Advisor/recommendations/e840dbb7443be62657631b105ca603bc8564d38759ebd3953abd4b8c1fe84c42"
   }
 ]

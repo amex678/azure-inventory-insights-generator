@@ -2,9 +2,9 @@
   "meta": {
     "subscriptionName": "ME-MngEnvMCAP720509-tamemiya-1",
     "subscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
-    "generatedAt": "2026-07-14T05:10:54Z",
+    "generatedAt": "2026-07-14T11:45:13Z",
     "reportDate": "2026-07-14",
-    "runId": "29307710343",
+    "runId": "29329819772",
     "schemaVersion": 1
   },
   "facts": {
@@ -41,13 +41,13 @@
     "defender.secureScorePct": 26.2,
     "advisor.total": 184,
     "advisor.costCount": 0,
-    "advisor.operationalCount": 18,
+    "advisor.operationalCount": 16,
     "advisor.performanceCount": 0,
-    "advisor.highAvailabilityCount": 40,
+    "advisor.highAvailabilityCount": 42,
     "advisor.securityCount": 126,
     "advisor.highCount": 60,
-    "advisor.mediumCount": 90,
-    "advisor.lowCount": 34
+    "advisor.mediumCount": 88,
+    "advisor.lowCount": 36
   },
   "scores": {
     "nsg": 90,
