@@ -2363,7 +2363,7 @@
     "ResourceName": "vmprovjpe202607091459",
     "ResourceType": "Microsoft.Compute/virtualMachines",
     "ResourceGroupName": "rg-vmprov-jpe-20260709-1459",
-    "LastUpdated": "2026-07-09T09:16:37.7237401Z",
+    "LastUpdated": "2026-07-15T09:19:38.8799717Z",
     "RecommendationId": "4f089f48bab6bc6eba750276f827c0c05cfef6f5edda08dbbd017776084327da",
     "Id": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-vmprov-jpe-20260709-1459/providers/microsoft.compute/virtualmachines/vmprovjpe202607091459/providers/Microsoft.Advisor/recommendations/4f089f48bab6bc6eba750276f827c0c05cfef6f5edda08dbbd017776084327da"
   },
@@ -2878,5 +2878,53 @@
     "LastUpdated": "2026-07-14T08:18:00.9498921Z",
     "RecommendationId": "e840dbb7443be62657631b105ca603bc8564d38759ebd3953abd4b8c1fe84c42",
     "Id": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-nwri-jpe-20260709/providers/microsoft.compute/virtualmachines/vm-nwri-dst-jpe/providers/Microsoft.Advisor/recommendations/e840dbb7443be62657631b105ca603bc8564d38759ebd3953abd4b8c1fe84c42"
+  },
+  {
+    "Category": "Security",
+    "Impact": "Low",
+    "Risk": null,
+    "Problem": "Azure Backup should be enabled for virtual machines",
+    "Solution": "Azure Backup should be enabled for virtual machines",
+    "ImpactedField": "Microsoft.Compute/virtualMachines",
+    "ImpactedValue": "vm-nwri-dst-jpe",
+    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-nwri-jpe-20260709/providers/microsoft.compute/virtualmachines/vm-nwri-dst-jpe",
+    "ResourceName": "vm-nwri-dst-jpe",
+    "ResourceType": "Microsoft.Compute/virtualMachines",
+    "ResourceGroupName": "rg-nwri-jpe-20260709",
+    "LastUpdated": "2026-07-15T05:22:51.579427Z",
+    "RecommendationId": "8ae9c03b08d03b178f511f1aaff58d5b49d3aadd866a6022edcd0ac392e02b0e",
+    "Id": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-nwri-jpe-20260709/providers/microsoft.compute/virtualmachines/vm-nwri-dst-jpe/providers/Microsoft.Advisor/recommendations/8ae9c03b08d03b178f511f1aaff58d5b49d3aadd866a6022edcd0ac392e02b0e"
+  },
+  {
+    "Category": "Security",
+    "Impact": "Low",
+    "Risk": null,
+    "Problem": "Azure Backup should be enabled for virtual machines",
+    "Solution": "Azure Backup should be enabled for virtual machines",
+    "ImpactedField": "Microsoft.Compute/virtualMachines",
+    "ImpactedValue": "vm-nwri-src-jpe",
+    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-nwri-jpe-20260709/providers/microsoft.compute/virtualmachines/vm-nwri-src-jpe",
+    "ResourceName": "vm-nwri-src-jpe",
+    "ResourceType": "Microsoft.Compute/virtualMachines",
+    "ResourceGroupName": "rg-nwri-jpe-20260709",
+    "LastUpdated": "2026-07-15T05:22:49.8547244Z",
+    "RecommendationId": "e04a324ae9a1ddf09f718b1222efbbefd071bb8b5c0b15b9c629674b268af35c",
+    "Id": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-nwri-jpe-20260709/providers/microsoft.compute/virtualmachines/vm-nwri-src-jpe/providers/Microsoft.Advisor/recommendations/e04a324ae9a1ddf09f718b1222efbbefd071bb8b5c0b15b9c629674b268af35c"
+  },
+  {
+    "Category": "Security",
+    "Impact": "Medium",
+    "Risk": null,
+    "Problem": "Storage account should use a private link connection",
+    "Solution": "Storage account should use a private link connection",
+    "ImpactedField": "Microsoft.Storage/storageAccounts",
+    "ImpactedValue": "nwrilkb2l5f6fuhds",
+    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-nwri-jpe-20260709/providers/microsoft.storage/storageaccounts/nwrilkb2l5f6fuhds",
+    "ResourceName": "nwrilkb2l5f6fuhds",
+    "ResourceType": "Microsoft.Storage/storageAccounts",
+    "ResourceGroupName": "rg-nwri-jpe-20260709",
+    "LastUpdated": "2026-07-15T05:34:06.0766772Z",
+    "RecommendationId": "b54eccc2dafdb85aa84383757bb86eabc1949e15be7dea664dbd1a792fe4a1b4",
+    "Id": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-nwri-jpe-20260709/providers/microsoft.storage/storageaccounts/nwrilkb2l5f6fuhds/providers/Microsoft.Advisor/recommendations/b54eccc2dafdb85aa84383757bb86eabc1949e15be7dea664dbd1a792fe4a1b4"
   }
 ]
