@@ -21,7 +21,7 @@
     "NsgName": "nsg-demo-db",
     "ResourceGroupName": "rg-inventory-demo",
     "Location": "japaneast",
-    "AssociationCount": 1,
+    "AssociationCount": 0,
     "RuleName": "Allow-Sql-FromApp",
     "Priority": 100,
     "Direction": "Inbound",

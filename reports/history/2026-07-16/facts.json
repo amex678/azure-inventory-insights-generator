@@ -2,13 +2,13 @@
   "meta": {
     "subscriptionName": "ME-MngEnvMCAP720509-tamemiya-1",
     "subscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
-    "generatedAt": "2026-07-16T05:20:18Z",
+    "generatedAt": "2026-07-16T11:53:39Z",
     "reportDate": "2026-07-16",
-    "runId": "29473535110",
+    "runId": "29495954335",
     "schemaVersion": 1
   },
   "facts": {
-    "resources.total": 65,
+    "resources.total": 66,
     "resources.types": 16,
     "resources.resourceGroups": 6,
     "resources.locations": 4,
@@ -17,7 +17,7 @@
     "resources.storageCount": 3,
     "resources.lrsStorageCount": 3,
     "resources.untaggedCount": 30,
-    "resources.tagCoveragePct": 53.8,
+    "resources.tagCoveragePct": 54.5,
     "rbac.total": 41,
     "rbac.ownerCount": 13,
     "rbac.uaaCount": 2,
@@ -30,31 +30,31 @@
     "nsg.ruleCount": 11,
     "nsg.riskyCount": 0,
     "nsg.inboundAllowCount": 6,
-    "defender.total": 474,
-    "defender.unhealthyCount": 298,
-    "defender.healthyCount": 101,
+    "defender.total": 453,
+    "defender.unhealthyCount": 276,
+    "defender.healthyCount": 102,
     "defender.notApplicableCount": 75,
-    "defender.highCount": 91,
-    "defender.mediumCount": 186,
-    "defender.lowCount": 21,
-    "defender.evaluatedCount": 399,
-    "defender.secureScorePct": 25.3,
-    "advisor.total": 185,
+    "defender.highCount": 89,
+    "defender.mediumCount": 167,
+    "defender.lowCount": 20,
+    "defender.evaluatedCount": 378,
+    "defender.secureScorePct": 27.0,
+    "advisor.total": 189,
     "advisor.costCount": 0,
     "advisor.operationalCount": 16,
     "advisor.performanceCount": 0,
     "advisor.highAvailabilityCount": 38,
-    "advisor.securityCount": 131,
-    "advisor.highCount": 60,
-    "advisor.mediumCount": 86,
+    "advisor.securityCount": 135,
+    "advisor.highCount": 62,
+    "advisor.mediumCount": 88,
     "advisor.lowCount": 39
   },
   "scores": {
     "nsg": 90,
     "rbac": 0,
-    "defender": 25.3,
+    "defender": 27.0,
     "advisor": 0,
-    "governance": 53.8,
+    "governance": 54.5,
     "overall": 34.0,
     "verdict": "critical",
     "verdictLabel": "重大な是正が必要"
@@ -90,25 +90,25 @@
     {
       "id": "secureScore",
       "label": "Secure Score",
-      "value": 25.3,
+      "value": 27.0,
       "unit": "%",
       "severity": "high",
-      "sub": "Healthy 101 / 399",
+      "sub": "Healthy 102 / 378",
       "fact_id": "defender.secureScorePct"
     },
     {
       "id": "advisorHigh",
       "label": "Advisor High",
-      "value": 60,
+      "value": 62,
       "unit": "件",
       "severity": "high",
-      "sub": "総 185 件",
+      "sub": "総 189 件",
       "fact_id": "advisor.highCount"
     },
     {
       "id": "tagCoverage",
       "label": "タグ付与率",
-      "value": 53.8,
+      "value": 54.5,
       "unit": "%",
       "severity": "medium",
       "sub": "未付与 30",
@@ -278,7 +278,7 @@
   "samples": {
     "topResourceType": {
       "name": "Microsoft.Network/networkSecurityGroups",
-      "count": 12
+      "count": 13
     },
     "riskyNsgRules": []
   }

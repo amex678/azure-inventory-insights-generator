@@ -491,7 +491,7 @@
     "SubscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
     "Sku": null,
     "Kind": null,
-    "Tags": "purpose=demo;createdBy=GitHubCopilotBrowserAutomation;deleteAfter=2026-07-31;demoTheme=network-watcher-rule-impact;owner=csa",
+    "Tags": "createdBy=GitHubCopilotBrowserAutomation;demoTheme=network-watcher-rule-impact;purpose=demo;owner=csa;deleteAfter=2026-07-31",
     "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/rg-nwri-jpe-20260709/providers/Microsoft.Network/virtualNetworks/vnet-nwri-jpe"
   },
   {
@@ -713,5 +713,16 @@
     "Kind": null,
     "Tags": "owner=demo;project=AzureInventoryDemo;env=demo",
     "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/rg-inventory-demo/providers/Microsoft.Network/networkSecurityGroups/vnet-demo-snet-app-nsg-japaneast"
+  },
+  {
+    "Name": "vnet-nwri-jpe-snet-nsg-candidate-nsg-japaneast",
+    "ResourceType": "Microsoft.Network/networkSecurityGroups",
+    "ResourceGroupName": "rg-nwri-jpe-20260709",
+    "Location": "japaneast",
+    "SubscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
+    "Sku": null,
+    "Kind": null,
+    "Tags": "createdBy=GitHubCopilotBrowserAutomation;owner=csa;purpose=demo;deleteAfter=2026-07-31;demoTheme=network-watcher-rule-impact",
+    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/rg-nwri-jpe-20260709/providers/Microsoft.Network/networkSecurityGroups/vnet-nwri-jpe-snet-nsg-candidate-nsg-japaneast"
   }
 ]
