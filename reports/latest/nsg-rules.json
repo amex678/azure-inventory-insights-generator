@@ -90,6 +90,24 @@
     "NsgId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/rg-inventory-demo/providers/Microsoft.Network/networkSecurityGroups/nsg-demo-web"
   },
   {
+    "NsgName": "nsg-amig-demo-je-001",
+    "ResourceGroupName": "rg-migrate-demo-je-001",
+    "Location": "japaneast",
+    "AssociationCount": 1,
+    "RuleName": "AllowIntraSubnet",
+    "Priority": 110,
+    "Direction": "Inbound",
+    "Access": "Allow",
+    "Protocol": "*",
+    "SourceAddressPrefix": "10.72.1.0/24",
+    "SourcePortRange": "*",
+    "DestinationAddressPrefix": "10.72.1.0/24",
+    "DestinationPortRange": "*",
+    "Description": null,
+    "IsRiskyMgmtFromInternet": false,
+    "NsgId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/rg-migrate-demo-je-001/providers/Microsoft.Network/networkSecurityGroups/nsg-amig-demo-je-001"
+  },
+  {
     "NsgName": "nsg-nwri-candidate-jpe",
     "ResourceGroupName": "rg-nwri-jpe-20260709",
     "Location": "japaneast",

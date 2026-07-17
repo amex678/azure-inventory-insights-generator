@@ -2,22 +2,22 @@
   "meta": {
     "subscriptionName": "ME-MngEnvMCAP720509-tamemiya-1",
     "subscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
-    "generatedAt": "2026-07-17T05:22:58Z",
+    "generatedAt": "2026-07-17T11:40:21Z",
     "reportDate": "2026-07-17",
-    "runId": "29557075076",
+    "runId": "29577484322",
     "schemaVersion": 1
   },
   "facts": {
-    "resources.total": 66,
-    "resources.types": 16,
-    "resources.resourceGroups": 6,
-    "resources.locations": 4,
-    "resources.vmCount": 8,
-    "resources.publicIpCount": 2,
-    "resources.storageCount": 3,
-    "resources.lrsStorageCount": 3,
-    "resources.untaggedCount": 30,
-    "resources.tagCoveragePct": 54.5,
+    "resources.total": 84,
+    "resources.types": 17,
+    "resources.resourceGroups": 7,
+    "resources.locations": 5,
+    "resources.vmCount": 11,
+    "resources.publicIpCount": 3,
+    "resources.storageCount": 4,
+    "resources.lrsStorageCount": 4,
+    "resources.untaggedCount": 48,
+    "resources.tagCoveragePct": 42.9,
     "rbac.total": 41,
     "rbac.ownerCount": 13,
     "rbac.uaaCount": 2,
@@ -26,36 +26,36 @@
     "rbac.orphanCount": 41,
     "rbac.mgScopeCount": 13,
     "rbac.ownerMgCount": 10,
-    "nsg.nsgCount": 7,
-    "nsg.ruleCount": 11,
+    "nsg.nsgCount": 8,
+    "nsg.ruleCount": 12,
     "nsg.riskyCount": 0,
-    "nsg.inboundAllowCount": 6,
-    "defender.total": 407,
-    "defender.unhealthyCount": 232,
-    "defender.healthyCount": 106,
-    "defender.notApplicableCount": 69,
-    "defender.highCount": 76,
+    "nsg.inboundAllowCount": 7,
+    "defender.total": 426,
+    "defender.unhealthyCount": 225,
+    "defender.healthyCount": 124,
+    "defender.notApplicableCount": 77,
+    "defender.highCount": 69,
     "defender.mediumCount": 137,
     "defender.lowCount": 19,
-    "defender.evaluatedCount": 338,
-    "defender.secureScorePct": 31.4,
-    "advisor.total": 191,
+    "defender.evaluatedCount": 349,
+    "defender.secureScorePct": 35.5,
+    "advisor.total": 200,
     "advisor.costCount": 0,
     "advisor.operationalCount": 16,
     "advisor.performanceCount": 0,
-    "advisor.highAvailabilityCount": 40,
-    "advisor.securityCount": 135,
-    "advisor.highCount": 62,
-    "advisor.mediumCount": 90,
+    "advisor.highAvailabilityCount": 43,
+    "advisor.securityCount": 141,
+    "advisor.highCount": 67,
+    "advisor.mediumCount": 94,
     "advisor.lowCount": 39
   },
   "scores": {
     "nsg": 90,
     "rbac": 0,
-    "defender": 31.4,
+    "defender": 35.5,
     "advisor": 0,
-    "governance": 54.5,
-    "overall": 35.0,
+    "governance": 42.9,
+    "overall": 34.0,
     "verdict": "critical",
     "verdictLabel": "重大な是正が必要"
   },
@@ -63,7 +63,7 @@
     {
       "id": "overall",
       "label": "総合スコア",
-      "value": 35.0,
+      "value": 34.0,
       "unit": "/100",
       "severity": "high",
       "sub": "重大な是正が必要",
@@ -90,28 +90,28 @@
     {
       "id": "secureScore",
       "label": "Secure Score",
-      "value": 31.4,
+      "value": 35.5,
       "unit": "%",
       "severity": "high",
-      "sub": "Healthy 106 / 338",
+      "sub": "Healthy 124 / 349",
       "fact_id": "defender.secureScorePct"
     },
     {
       "id": "advisorHigh",
       "label": "Advisor High",
-      "value": 62,
+      "value": 67,
       "unit": "件",
       "severity": "high",
-      "sub": "総 191 件",
+      "sub": "総 200 件",
       "fact_id": "advisor.highCount"
     },
     {
       "id": "tagCoverage",
       "label": "タグ付与率",
-      "value": 54.5,
+      "value": 42.9,
       "unit": "%",
-      "severity": "medium",
-      "sub": "未付与 30",
+      "severity": "high",
+      "sub": "未付与 48",
       "fact_id": "resources.tagCoveragePct"
     }
   ],
@@ -193,12 +193,6 @@
         "fact_ids": [
           "advisor.total"
         ]
-      },
-      {
-        "id": "strength.smallVmFleet",
-        "fact_ids": [
-          "resources.vmCount"
-        ]
       }
     ],
     "focus": [
@@ -278,7 +272,7 @@
   "samples": {
     "topResourceType": {
       "name": "Microsoft.Network/networkSecurityGroups",
-      "count": 13
+      "count": 14
     },
     "riskyNsgRules": []
   }

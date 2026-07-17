@@ -724,5 +724,203 @@
     "Kind": null,
     "Tags": "createdBy=GitHubCopilotBrowserAutomation;owner=csa;purpose=demo;deleteAfter=2026-07-31;demoTheme=network-watcher-rule-impact",
     "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/rg-nwri-jpe-20260709/providers/Microsoft.Network/networkSecurityGroups/vnet-nwri-jpe-snet-nsg-candidate-nsg-japaneast"
+  },
+  {
+    "Name": "nsg-amig-demo-je-001",
+    "ResourceType": "Microsoft.Network/networkSecurityGroups",
+    "ResourceGroupName": "rg-migrate-demo-je-001",
+    "Location": "japaneast",
+    "SubscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
+    "Sku": null,
+    "Kind": null,
+    "Tags": "",
+    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/rg-migrate-demo-je-001/providers/Microsoft.Network/networkSecurityGroups/nsg-amig-demo-je-001"
+  },
+  {
+    "Name": "pip-vm-amig-appl-001",
+    "ResourceType": "Microsoft.Network/publicIPAddresses",
+    "ResourceGroupName": "rg-migrate-demo-je-001",
+    "Location": "japaneast",
+    "SubscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
+    "Sku": "Standard",
+    "Kind": null,
+    "Tags": "",
+    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/rg-migrate-demo-je-001/providers/Microsoft.Network/publicIPAddresses/pip-vm-amig-appl-001"
+  },
+  {
+    "Name": "vnet-amig-demo-je-001",
+    "ResourceType": "Microsoft.Network/virtualNetworks",
+    "ResourceGroupName": "rg-migrate-demo-je-001",
+    "Location": "japaneast",
+    "SubscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
+    "Sku": null,
+    "Kind": null,
+    "Tags": "",
+    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/rg-migrate-demo-je-001/providers/Microsoft.Network/virtualNetworks/vnet-amig-demo-je-001"
+  },
+  {
+    "Name": "nic-vm-amig-win-001",
+    "ResourceType": "Microsoft.Network/networkInterfaces",
+    "ResourceGroupName": "rg-migrate-demo-je-001",
+    "Location": "japaneast",
+    "SubscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
+    "Sku": null,
+    "Kind": null,
+    "Tags": "",
+    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/rg-migrate-demo-je-001/providers/Microsoft.Network/networkInterfaces/nic-vm-amig-win-001"
+  },
+  {
+    "Name": "nic-vm-amig-ubu-001",
+    "ResourceType": "Microsoft.Network/networkInterfaces",
+    "ResourceGroupName": "rg-migrate-demo-je-001",
+    "Location": "japaneast",
+    "SubscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
+    "Sku": null,
+    "Kind": null,
+    "Tags": "",
+    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/rg-migrate-demo-je-001/providers/Microsoft.Network/networkInterfaces/nic-vm-amig-ubu-001"
+  },
+  {
+    "Name": "nic-vm-amig-appl-001",
+    "ResourceType": "Microsoft.Network/networkInterfaces",
+    "ResourceGroupName": "rg-migrate-demo-je-001",
+    "Location": "japaneast",
+    "SubscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
+    "Sku": null,
+    "Kind": null,
+    "Tags": "",
+    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/rg-migrate-demo-je-001/providers/Microsoft.Network/networkInterfaces/nic-vm-amig-appl-001"
+  },
+  {
+    "Name": "vm-amig-ubu-001",
+    "ResourceType": "Microsoft.Compute/virtualMachines",
+    "ResourceGroupName": "rg-migrate-demo-je-001",
+    "Location": "japaneast",
+    "SubscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
+    "Sku": null,
+    "Kind": null,
+    "Tags": "",
+    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/rg-migrate-demo-je-001/providers/Microsoft.Compute/virtualMachines/vm-amig-ubu-001"
+  },
+  {
+    "Name": "vm-amig-appl-001",
+    "ResourceType": "Microsoft.Compute/virtualMachines",
+    "ResourceGroupName": "rg-migrate-demo-je-001",
+    "Location": "japaneast",
+    "SubscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
+    "Sku": null,
+    "Kind": null,
+    "Tags": "",
+    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/rg-migrate-demo-je-001/providers/Microsoft.Compute/virtualMachines/vm-amig-appl-001"
+  },
+  {
+    "Name": "vm-amig-win-001",
+    "ResourceType": "Microsoft.Compute/virtualMachines",
+    "ResourceGroupName": "rg-migrate-demo-je-001",
+    "Location": "japaneast",
+    "SubscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
+    "Sku": null,
+    "Kind": null,
+    "Tags": "",
+    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/rg-migrate-demo-je-001/providers/Microsoft.Compute/virtualMachines/vm-amig-win-001"
+  },
+  {
+    "Name": "vm-amig-win-001_OsDisk_1_e77733f43d73447c939ab324885f5576",
+    "ResourceType": "Microsoft.Compute/disks",
+    "ResourceGroupName": "RG-MIGRATE-DEMO-JE-001",
+    "Location": "japaneast",
+    "SubscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
+    "Sku": "Premium_LRS",
+    "Kind": null,
+    "Tags": "",
+    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/RG-MIGRATE-DEMO-JE-001/providers/Microsoft.Compute/disks/vm-amig-win-001_OsDisk_1_e77733f43d73447c939ab324885f5576"
+  },
+  {
+    "Name": "vm-amig-ubu-001_OsDisk_1_0c28a750701d4b0c8946f4c29b24cf06",
+    "ResourceType": "Microsoft.Compute/disks",
+    "ResourceGroupName": "RG-MIGRATE-DEMO-JE-001",
+    "Location": "japaneast",
+    "SubscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
+    "Sku": "Premium_LRS",
+    "Kind": null,
+    "Tags": "",
+    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/RG-MIGRATE-DEMO-JE-001/providers/Microsoft.Compute/disks/vm-amig-ubu-001_OsDisk_1_0c28a750701d4b0c8946f4c29b24cf06"
+  },
+  {
+    "Name": "vm-amig-appl-001_OsDisk_1_3fd7cd07011d42d5aeadf6e73f59f7db",
+    "ResourceType": "Microsoft.Compute/disks",
+    "ResourceGroupName": "RG-MIGRATE-DEMO-JE-001",
+    "Location": "japaneast",
+    "SubscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
+    "Sku": "Premium_LRS",
+    "Kind": null,
+    "Tags": "",
+    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/RG-MIGRATE-DEMO-JE-001/providers/Microsoft.Compute/disks/vm-amig-appl-001_OsDisk_1_3fd7cd07011d42d5aeadf6e73f59f7db"
+  },
+  {
+    "Name": "stamiguctnhzjq4unu2",
+    "ResourceType": "Microsoft.Storage/storageAccounts",
+    "ResourceGroupName": "rg-migrate-demo-je-001",
+    "Location": "centralus",
+    "SubscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
+    "Sku": "Standard_LRS",
+    "Kind": "StorageV2",
+    "Tags": "",
+    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/rg-migrate-demo-je-001/providers/Microsoft.Storage/storageAccounts/stamiguctnhzjq4unu2"
+  },
+  {
+    "Name": "amig-demo-project",
+    "ResourceType": "Microsoft.Migrate/migrateprojects",
+    "ResourceGroupName": "rg-migrate-demo-je-001",
+    "Location": "centralus",
+    "SubscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
+    "Sku": null,
+    "Kind": null,
+    "Tags": "",
+    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/rg-migrate-demo-je-001/providers/Microsoft.Migrate/migrateprojects/amig-demo-project"
+  },
+  {
+    "Name": "vm-amig-appl-001/MDE.Windows",
+    "ResourceType": "Microsoft.Compute/virtualMachines/extensions",
+    "ResourceGroupName": "RG-MIGRATE-DEMO-JE-001",
+    "Location": "japaneast",
+    "SubscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
+    "Sku": null,
+    "Kind": null,
+    "Tags": "",
+    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/RG-MIGRATE-DEMO-JE-001/providers/Microsoft.Compute/virtualMachines/vm-amig-appl-001/extensions/MDE.Windows"
+  },
+  {
+    "Name": "vm-amig-ubu-001/MDE.Linux",
+    "ResourceType": "Microsoft.Compute/virtualMachines/extensions",
+    "ResourceGroupName": "RG-MIGRATE-DEMO-JE-001",
+    "Location": "japaneast",
+    "SubscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
+    "Sku": null,
+    "Kind": null,
+    "Tags": "",
+    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/RG-MIGRATE-DEMO-JE-001/providers/Microsoft.Compute/virtualMachines/vm-amig-ubu-001/extensions/MDE.Linux"
+  },
+  {
+    "Name": "vm-amig-win-001/MDE.Windows",
+    "ResourceType": "Microsoft.Compute/virtualMachines/extensions",
+    "ResourceGroupName": "RG-MIGRATE-DEMO-JE-001",
+    "Location": "japaneast",
+    "SubscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
+    "Sku": null,
+    "Kind": null,
+    "Tags": "",
+    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/RG-MIGRATE-DEMO-JE-001/providers/Microsoft.Compute/virtualMachines/vm-amig-win-001/extensions/MDE.Windows"
+  },
+  {
+    "Name": "stamiguctnhzjq4unu2-050514de-a7f0-4a36-ae99-21f6f9f8e74e",
+    "ResourceType": "Microsoft.EventGrid/systemTopics",
+    "ResourceGroupName": "rg-migrate-demo-je-001",
+    "Location": "centralus",
+    "SubscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
+    "Sku": null,
+    "Kind": null,
+    "Tags": "",
+    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/rg-migrate-demo-je-001/providers/Microsoft.EventGrid/systemTopics/stamiguctnhzjq4unu2-050514de-a7f0-4a36-ae99-21f6f9f8e74e"
   }
 ]
