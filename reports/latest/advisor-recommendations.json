@@ -2283,7 +2283,7 @@
     "ResourceName": "mobvmghc-vm-yypwhhh6st5ky",
     "ResourceType": "Microsoft.Compute/virtualMachines",
     "ResourceGroupName": "rg-mobile-ghc-cli",
-    "LastUpdated": "2026-07-07T05:33:57.5493285Z",
+    "LastUpdated": "2026-07-17T16:07:56.4318348Z",
     "RecommendationId": "cd826d15487d34cce5717a6aed7a7958acafecc625989960446592e49fa5dd90",
     "Id": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-mobile-ghc-cli/providers/microsoft.compute/virtualmachines/mobvmghc-vm-yypwhhh6st5ky/providers/Microsoft.Advisor/recommendations/cd826d15487d34cce5717a6aed7a7958acafecc625989960446592e49fa5dd90"
   },
@@ -3198,5 +3198,37 @@
     "LastUpdated": "2026-07-17T11:12:00.4151094Z",
     "RecommendationId": "55a9307f60da51db125e9f58b2c66bebf6d3891dc9543f348b3ea815348f0496",
     "Id": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-migrate-demo-je-001/providers/microsoft.network/virtualnetworks/vnet-amig-demo-je-001/providers/Microsoft.Advisor/recommendations/55a9307f60da51db125e9f58b2c66bebf6d3891dc9543f348b3ea815348f0496"
+  },
+  {
+    "Category": "OperationalExcellence",
+    "Impact": "High",
+    "Risk": null,
+    "Problem": "Enable Trusted Launch foundational excellence, and modern security for Existing Generation 2 VM(s)",
+    "Solution": "Enable Trusted Launch foundational excellence, and modern security for Existing Generation 2 VM(s)",
+    "ImpactedField": "MICROSOFT.COMPUTE/VIRTUALMACHINES",
+    "ImpactedValue": "vm-amig-win-001",
+    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-migrate-demo-je-001/providers/microsoft.compute/virtualmachines/vm-amig-win-001",
+    "ResourceName": "vm-amig-win-001",
+    "ResourceType": "MICROSOFT.COMPUTE/VIRTUALMACHINES",
+    "ResourceGroupName": "rg-migrate-demo-je-001",
+    "LastUpdated": "2026-07-17T13:59:51.0833877Z",
+    "RecommendationId": "a1a807ab4225018cf77899caef8a5190ce91a812b3efde39a0dae5312216c03b",
+    "Id": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-migrate-demo-je-001/providers/microsoft.compute/virtualmachines/vm-amig-win-001/providers/Microsoft.Advisor/recommendations/a1a807ab4225018cf77899caef8a5190ce91a812b3efde39a0dae5312216c03b"
+  },
+  {
+    "Category": "OperationalExcellence",
+    "Impact": "High",
+    "Risk": null,
+    "Problem": "Enable Trusted Launch foundational excellence, and modern security for Existing Generation 2 VM(s)",
+    "Solution": "Enable Trusted Launch foundational excellence, and modern security for Existing Generation 2 VM(s)",
+    "ImpactedField": "MICROSOFT.COMPUTE/VIRTUALMACHINES",
+    "ImpactedValue": "vm-amig-appl-001",
+    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-migrate-demo-je-001/providers/microsoft.compute/virtualmachines/vm-amig-appl-001",
+    "ResourceName": "vm-amig-appl-001",
+    "ResourceType": "MICROSOFT.COMPUTE/VIRTUALMACHINES",
+    "ResourceGroupName": "rg-migrate-demo-je-001",
+    "LastUpdated": "2026-07-17T13:59:27.7704355Z",
+    "RecommendationId": "d0f1019d9d31e28bf341899fe9fd0d1c2918c10f015fd9e3556ec8d8a4de4fb7",
+    "Id": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-migrate-demo-je-001/providers/microsoft.compute/virtualmachines/vm-amig-appl-001/providers/Microsoft.Advisor/recommendations/d0f1019d9d31e28bf341899fe9fd0d1c2918c10f015fd9e3556ec8d8a4de4fb7"
   }
 ]

@@ -830,7 +830,7 @@
     "ResourceGroupName": "RG-MIGRATE-DEMO-JE-001",
     "Location": "japaneast",
     "SubscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
-    "Sku": "Premium_LRS",
+    "Sku": "Standard_LRS",
     "Kind": null,
     "Tags": "",
     "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/RG-MIGRATE-DEMO-JE-001/providers/Microsoft.Compute/disks/vm-amig-win-001_OsDisk_1_e77733f43d73447c939ab324885f5576"
@@ -841,7 +841,7 @@
     "ResourceGroupName": "RG-MIGRATE-DEMO-JE-001",
     "Location": "japaneast",
     "SubscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
-    "Sku": "Premium_LRS",
+    "Sku": "Standard_LRS",
     "Kind": null,
     "Tags": "",
     "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/RG-MIGRATE-DEMO-JE-001/providers/Microsoft.Compute/disks/vm-amig-ubu-001_OsDisk_1_0c28a750701d4b0c8946f4c29b24cf06"
@@ -852,7 +852,7 @@
     "ResourceGroupName": "RG-MIGRATE-DEMO-JE-001",
     "Location": "japaneast",
     "SubscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
-    "Sku": "Premium_LRS",
+    "Sku": "Standard_LRS",
     "Kind": null,
     "Tags": "",
     "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourceGroups/RG-MIGRATE-DEMO-JE-001/providers/Microsoft.Compute/disks/vm-amig-appl-001_OsDisk_1_3fd7cd07011d42d5aeadf6e73f59f7db"
