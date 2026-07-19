@@ -132,11 +132,11 @@
 <body>
 <header class="top">
   <h1>Azure 総合レポート <span class="badge">管理者向け</span> <span class="badge">AI Insights</span> <span class="badge">横断分析</span></h1>
-  <div class="sub">サブスクリプション: ME-MngEnvMCAP720509-tamemiya-1 (1acecba7-23bd-4d4d-9770-0b11998514dc) ／ 生成日時: 2026-07-19 05:34:53 ／ 入力: resources (84) · rbac (41) · nsg (12) · defender (476) · advisor (220)</div>
+  <div class="sub">サブスクリプション: ME-MngEnvMCAP720509-tamemiya-1 (1acecba7-23bd-4d4d-9770-0b11998514dc) ／ 生成日時: 2026-07-19 11:22:36 ／ 入力: resources (84) · rbac (41) · nsg (12) · defender (476) · advisor (218)</div>
 </header>
 <main>
 
-  <div style="background:linear-gradient(90deg,#475569,#64748b); color:#fff; font-size:12px; padding:8px 16px; border-radius:8px; margin-bottom:14px;">&#9881;&#65039; 本文はルールベース（フォールバック）で生成 ／ 理由: body.json が指定されていません（ルールベース散文で生成） ／ run_id: 29674943260</div>
+  <div style="background:linear-gradient(90deg,#475569,#64748b); color:#fff; font-size:12px; padding:8px 16px; border-radius:8px; margin-bottom:14px;">&#9881;&#65039; 本文はルールベース（フォールバック）で生成 ／ 理由: body.json が指定されていません（ルールベース散文で生成） ／ run_id: 29684926590</div>
 
   <div class="tabs" id="domain-tabs">
     <div class="tab-nav" role="tablist">
@@ -145,7 +145,7 @@
       <button class="tab-btn" type="button" role="tab" data-tab="rbac">RBAC <span class="cnt">41</span></button>
       <button class="tab-btn" type="button" role="tab" data-tab="nsg">NSG <span class="cnt">12</span></button>
       <button class="tab-btn" type="button" role="tab" data-tab="defender">Defender <span class="cnt">262</span></button>
-      <button class="tab-btn" type="button" role="tab" data-tab="advisor">Advisor <span class="cnt">220</span></button>
+      <button class="tab-btn" type="button" role="tab" data-tab="advisor">Advisor <span class="cnt">218</span></button>
     </div>
 
     <div class="tab-panel active" id="tab-overview" role="tabpanel">
@@ -163,7 +163,7 @@
 <div class='kpi'><div class='kpi-label'>高リスク NSG</div><div class='kpi-value' style='color:var(--ok)'>0<span class='kpi-unit'>件</span></div><div class='kpi-sub'>22/3389 公開</div></div>
 <div class='kpi'><div class='kpi-label'>Owner 付与</div><div class='kpi-value' style='color:var(--high)'>13<span class='kpi-unit'>件</span></div><div class='kpi-sub'>MG スコープ 10</div></div>
 <div class='kpi'><div class='kpi-label'>Secure Score</div><div class='kpi-value' style='color:var(--high)'>31.2<span class='kpi-unit'>%</span></div><div class='kpi-sub'>Healthy 119 / 381</div></div>
-<div class='kpi'><div class='kpi-label'>Advisor High</div><div class='kpi-value' style='color:var(--high)'>75<span class='kpi-unit'>件</span></div><div class='kpi-sub'>総 220 件</div></div>
+<div class='kpi'><div class='kpi-label'>Advisor High</div><div class='kpi-value' style='color:var(--high)'>75<span class='kpi-unit'>件</span></div><div class='kpi-sub'>総 218 件</div></div>
 <div class='kpi'><div class='kpi-label'>タグ付与率</div><div class='kpi-value' style='color:var(--high)'>42.9<span class='kpi-unit'>%</span></div><div class='kpi-sub'>未付与 48</div></div></div>
 
 <div class="exec-cols">
@@ -172,7 +172,7 @@
     <ul><li><strong>特権境界:</strong> 管理グループ スコープへの <strong>Owner 付与が 10 件</strong>。配下の全サブスクへ権限が波及。</li>
 <li><strong>監査追跡性:</strong> 削除済み ID とみられる孤児候補のロール割り当てが <strong>41 件</strong> 残存。</li>
 <li><strong>セキュリティ態勢:</strong> Defender High Severity 推奨事項 <strong>79 件</strong>（Secure Score 31.2%）。<em>暗号化未有効と特権ロール過剰付与が主因。</em></li>
-<li><strong>最適化機会:</strong> Advisor High Impact <strong>75 件</strong>（HA 53 / Sec 145 / Op 22）。同一 VM 群に重複指摘 → デプロイ テンプレート不備。</li>
+<li><strong>最適化機会:</strong> Advisor High Impact <strong>75 件</strong>（HA 51 / Sec 145 / Op 22）。同一 VM 群に重複指摘 → デプロイ テンプレート不備。</li>
 <li><strong>ガバナンス:</strong> タグ付与率 <strong>42.9%</strong>。所有者・コスト按分・連絡先の特定が困難。</li>
 <li><strong>可用性:</strong> ストレージ 4 件中 <strong>4 件が LRS</strong>。AZ 障害時の可用性なし。</li></ul>
   </div>
@@ -180,7 +180,7 @@
     <h3>&#9989; 強み</h3>
     <ul><li>NSG 8 個に対し、インターネット → 管理ポートの直接公開なし。</li>
 <li>Defender for Cloud が有効化済み（476 件評価、High 79 / Med 161 / Low 22）。</li>
-<li>Azure Advisor が稼働中（220 件の最適化機会を可視化）。</li></ul>
+<li>Azure Advisor が稼働中（218 件の最適化機会を可視化）。</li></ul>
   </div>
 </div>
 
@@ -208,8 +208,8 @@
 <tr><td><span class='dom dom-defender'>Defender</span></td><td>総評価 / Unhealthy (High/Med/Low) / Healthy / NA</td><td class='num'>476 / 262 (79 / 161 / 22) / 119 / 95</td></tr>
 <tr><td><span class='dom dom-defender'>Defender</span></td><td>簡易 Secure Score (Healthy / 評価対象)</td><td class='num'>31.2% (119 / 381)</td></tr>
 <tr><td><span class='dom dom-defender'>Defender</span></td><td>Misconfigurations / Vulnerabilities</td><td class='num'>153 / 109</td></tr>
-<tr><td><span class='dom dom-advisor'>Advisor</span></td><td>総推奨 / Cost / Operational / Performance / HA / Security</td><td class='num'>220 / 0 / 22 / 0 / 53 / 145</td></tr>
-<tr><td><span class='dom dom-advisor'>Advisor</span></td><td>Impact 内訳 High / Medium / Low</td><td class='num'>75 / 103 / 42</td></tr></tbody>
+<tr><td><span class='dom dom-advisor'>Advisor</span></td><td>総推奨 / Cost / Operational / Performance / HA / Security</td><td class='num'>218 / 0 / 22 / 0 / 51 / 145</td></tr>
+<tr><td><span class='dom dom-advisor'>Advisor</span></td><td>Impact 内訳 High / Medium / Low</td><td class='num'>75 / 103 / 40</td></tr></tbody>
         </table>
       </section>
 
@@ -261,7 +261,7 @@
     <h3>Azure Advisor 推奨事項のフィードバックループ不在</h3>
   </header>
   <div class="risk-body">
-    <div class="row"><div class="lbl">観察事実</div><div class="val">Advisor の High Impact が 75 件、Cost 0 / Operational 22 / HA 53 / Security 145。最頻出: <code>Virtual machines and virtual machine scale sets should have encryption at host enabled（17 件）</code>。</div></div>
+    <div class="row"><div class="lbl">観察事実</div><div class="val">Advisor の High Impact が 75 件、Cost 0 / Operational 22 / HA 51 / Security 145。最頻出: <code>Virtual machines and virtual machine scale sets should have encryption at host enabled（17 件）</code>。</div></div>
     <div class="row"><div class="lbl">リスク理由</div><div class="val">Advisor はコスト・運用・パフォーマンス・可用性・セキュリティの 5 領域でサブスクリプション固有の最適化機会を提示します。長期未対応は <strong>無駄な課金の継続</strong>（未使用リソース・サイズ過大）、<strong>SLA リスク</strong>（単一ゾーン構成、サポート未契約等）、<strong>パフォーマンス劣化</strong> を発生させます。</div></div>
     <div class="row"><div class="lbl">推奨対応</div><div class="val">Advisor を Cost Management と連動させ、<strong>月次レビュー</strong> で High Impact から順に対応。Cost 系は予算アラート、HA 系はゾーン冗長化・バックアップ計画、Operational 系は Service Health アラートと連動させる。</div></div>
     <div class="row"><div class="lbl">公式ドキュメント</div><div class="val"><ul class="links"><li><a href='https://learn.microsoft.com/ja-jp/azure/advisor/advisor-overview' target='_blank' rel='noopener'>Azure Advisor の概要</a></li><li><a href='https://learn.microsoft.com/ja-jp/azure/advisor/advisor-reference-cost-recommendations' target='_blank' rel='noopener'>Advisor のコスト推奨事項</a></li><li><a href='https://learn.microsoft.com/ja-jp/azure/cost-management-billing/costs/quick-acm-cost-analysis' target='_blank' rel='noopener'>Cost Management でコスト分析</a></li></ul></div></div>
@@ -624,9 +624,9 @@
     <div class="tab-panel" id="tab-advisor" role="tabpanel">
       <h2><span class="dom dom-advisor">Advisor</span> Azure Advisor 見解 <span class="ai">AI</span></h2>
       <div class="insight adv" style="padding:14px 18px; border-radius:8px; margin-bottom:16px;">
-        <p>Azure Advisor は <strong>220 件</strong> の推奨事項を提示し、Impact は High 75 / Medium 103 / Low 42。カテゴリ分布は <strong>Security 145 / HA 53 / Operational 22 / Cost 0 / Performance 0</strong>。リソースの偏りは <strong>VM 156 件 / Disk 22 件 / Storage 19 件</strong> となっています。</p>
+        <p>Azure Advisor は <strong>218 件</strong> の推奨事項を提示し、Impact は High 75 / Medium 103 / Low 40。カテゴリ分布は <strong>Security 145 / HA 51 / Operational 22 / Cost 0 / Performance 0</strong>。リソースの偏りは <strong>VM 153 件 / Disk 22 件 / Storage 20 件</strong> となっています。</p>
 <p><strong>コスト面 (Cost 0):</strong> Cost 推奨が <strong>0 件</strong> なのは、(a) アイドル/低使用率の検出に必要な期間（通常 7-14 日）に到達していない、(b) RI/SP 推奨対象の安定稼働ワークロードがない、(c) Cost Management へのアクセス権限不足、のいずれかが原因と考えられます。<strong>運用が成熟しても Advisor Cost が常に 0 のままの場合は手動でのコスト分析を併用すべき</strong>です。</p>
-<p><strong>可用性面 (HA 53):</strong> HA 推奨 53 件のうち <strong>5 種類が High Impact</strong>。主な指摘は <em>「VM と Disk の同一ゾーン配置」「Storage のゾーン冗長」「Service Health アラート未設定」</em>。<strong>VM とディスクのゾーン不整合</strong> は、再起動時にディスクのアタッチに時間がかかる／別ゾーン障害時に巻き込まれる原因になります。</p>
+<p><strong>可用性面 (HA 51):</strong> HA 推奨 51 件のうち <strong>5 種類が High Impact</strong>。主な指摘は <em>「VM と Disk の同一ゾーン配置」「Storage のゾーン冗長」「Service Health アラート未設定」</em>。<strong>VM とディスクのゾーン不整合</strong> は、再起動時にディスクのアタッチに時間がかかる／別ゾーン障害時に巻き込まれる原因になります。</p>
 <p><strong>運用面 (Operational 22):</strong> Operational 22 件のうち High Impact 1 種類。主な指摘は <strong>「Trusted Launch 有効化（Gen2 VM）」「VM Insights 有効化」「VMSS Flex への移行」</strong>。これらは セキュリティ + 監視 + モダン化 の 3 領域を同時に底上げするため、<strong>VM の作り直し（ARM/Bicep テンプレ刷新）と同時に対応</strong> するのが効率的です。</p>
 <p><strong>セキュリティ面 (Security 145):</strong> Security 推奨は 145 件（High 9 種類）。Advisor の Security カテゴリは Defender for Cloud と連携しており、本リストと Defender セクションの Unhealthy 項目は <strong>重複して同じ問題</strong>（暗号化未有効、EDR、特権ロール等）を指しています。<strong>Defender 側を是正することで Advisor Security も自動的に減少</strong> します。</p>
 <p><strong>横断的なメッセージ:</strong> Advisor の推奨が <strong>同じ 5 VM に対して複数カテゴリで重複して出ている</strong> のが特徴で、これは <em>「VM デプロイ標準が古い／Trusted Launch・暗号化・Backup・Insights を組み込まずに作っている」</em> ことを示しています。<strong>個別対応ではなく VM の Bicep/Terraform モジュールを更新し、既存 5 VM を再デプロイする方が ROI が高い</strong>です。</p>
@@ -663,9 +663,9 @@
           <h3>推奨が集中するリソースタイプ Top 5</h3>
           <table>
             <thead><tr><th>Resource Type</th><th class="num">件数</th></tr></thead>
-            <tbody><tr><td>Microsoft.Compute/virtualMachines</td><td class='num'>156</td></tr>
+            <tbody><tr><td>Microsoft.Compute/virtualMachines</td><td class='num'>153</td></tr>
 <tr><td>MICROSOFT.COMPUTE/DISKS</td><td class='num'>22</td></tr>
-<tr><td>MICROSOFT.STORAGE/STORAGEACCOUNTS</td><td class='num'>19</td></tr>
+<tr><td>MICROSOFT.STORAGE/STORAGEACCOUNTS</td><td class='num'>20</td></tr>
 <tr><td>Microsoft.Subscriptions/subscriptions</td><td class='num'>12</td></tr>
 <tr><td>Microsoft.Network/virtualNetworks</td><td class='num'>7</td></tr></tbody>
           </table>
@@ -675,43 +675,43 @@
       <div class="scroll-box"><table>
         <thead><tr><th>Category</th><th>Impact</th><th>Problem</th><th>Resource Type</th><th>Resource</th></tr></thead>
         <tbody>
-        <tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Migrate workload to Virtual Machine Scale Sets Flex</td><td>MICROSOFT.COMPUTE/VIRTUALMACHINES</td><td>vm-demo-app-01</td></tr>
-<tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Migrate workload to Virtual Machine Scale Sets Flex</td><td>MICROSOFT.COMPUTE/VIRTUALMACHINES</td><td>vm-demo-web-01</td></tr>
-<tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Migrate workload to Virtual Machine Scale Sets Flex</td><td>MICROSOFT.COMPUTE/VIRTUALMACHINES</td><td>vm-demo-db-01</td></tr>
-<tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Migrate Standard HDD OS Disks to SSD</td><td>MICROSOFT.COMPUTE/DISKS</td><td>vm-demo-web-01_osdisk_1_2392e93e7c42432894a9e1d1ba5e26ce</td></tr>
+        <tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Enable Soft Delete to protect your blob data</td><td>Microsoft.Storage/storageAccounts</td><td>stamiguctnhzjq4unu2</td></tr>
 <tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Migrate workload to Virtual Machine Scale Sets Flex</td><td>MICROSOFT.COMPUTE/VIRTUALMACHINES</td><td>vm-nwri-src-jpe</td></tr>
 <tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Migrate workload to Virtual Machine Scale Sets Flex</td><td>MICROSOFT.COMPUTE/VIRTUALMACHINES</td><td>vm-nwri-dst-jpe</td></tr>
 <tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Migrate Standard HDD OS Disks to SSD</td><td>MICROSOFT.COMPUTE/DISKS</td><td>vm-nwri-src-jpe_osdisk_1_cb8a7c294776415f9732b629726f07f6</td></tr>
 <tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Migrate Standard HDD OS Disks to SSD</td><td>MICROSOFT.COMPUTE/DISKS</td><td>vm-nwri-dst-jpe_disk1_8ab5bd0fba01487db8fdadb3a014522b</td></tr>
-<tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Migrate Standard HDD OS Disks to SSD</td><td>MICROSOFT.COMPUTE/DISKS</td><td>vm-pw-ops-dev-jpw-27161_osdisk_1_d208705db396475a997b7edc60a576f9</td></tr>
 <tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Migrate workload to Virtual Machine Scale Sets Flex</td><td>MICROSOFT.COMPUTE/VIRTUALMACHINES</td><td>vm-pw-ops-dev-jpw-27161</td></tr>
 <tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Align location of resource and resource group</td><td>MICROSOFT.COMPUTE/VIRTUALMACHINES</td><td>vm-pw-ops-dev-jpw-27161</td></tr>
 <tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Use NAT gateway for outbound connectivity</td><td>MICROSOFT.NETWORK/VIRTUALNETWORKS</td><td>vnet-demo</td></tr>
 <tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Enable Soft Delete to protect your blob data</td><td>Microsoft.Storage/storageAccounts</td><td>mcaps97700b11998514dc</td></tr>
-<tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Enable Soft Delete to protect your blob data</td><td>Microsoft.Storage/storageAccounts</td><td>stdemogootyszw77dgs</td></tr>
-<tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Migrate Standard HDD OS Disks to SSD</td><td>MICROSOFT.COMPUTE/DISKS</td><td>vm-demo-mgmt-01_osdisk_1_94fcba78c6ed43aea9dd0b66c9bc83cc</td></tr>
-<tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Migrate Standard HDD OS Disks to SSD</td><td>MICROSOFT.COMPUTE/DISKS</td><td>vm-demo-app-01_osdisk_1_e89fd7546f2f430bb4c2eda57be7a17c</td></tr>
-<tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Migrate Standard HDD OS Disks to SSD</td><td>MICROSOFT.COMPUTE/DISKS</td><td>vm-amig-win-001_osdisk_1_e77733f43d73447c939ab324885f5576</td></tr>
-<tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Migrate Standard HDD OS Disks to SSD</td><td>MICROSOFT.COMPUTE/DISKS</td><td>vm-demo-db-01_osdisk_1_85ac425398fe4cca995190d561270e35</td></tr>
 <tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Enable Soft Delete to protect your blob data</td><td>Microsoft.Storage/storageAccounts</td><td>nwrilkb2l5f6fuhds</td></tr>
-<tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Migrate workload to Virtual Machine Scale Sets Flex</td><td>MICROSOFT.COMPUTE/VIRTUALMACHINES</td><td>vm-demo-mgmt-01</td></tr>
+<tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Enable Soft Delete to protect your blob data</td><td>Microsoft.Storage/storageAccounts</td><td>stdemogootyszw77dgs</td></tr>
 <tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Migrate Standard HDD OS Disks to SSD</td><td>MICROSOFT.COMPUTE/DISKS</td><td>vm-demo-app-02_osdisk_1_5cb5007064c247558fe1bb771768070c</td></tr>
-<tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Use NAT gateway for outbound connectivity</td><td>MICROSOFT.NETWORK/VIRTUALNETWORKS</td><td>vm-pw-ops-dev-jpw-27161vnet</td></tr>
-<tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Migrate Standard HDD OS Disks to SSD</td><td>MICROSOFT.COMPUTE/DISKS</td><td>vm-amig-appl-001_osdisk_1_3fd7cd07011d42d5aeadf6e73f59f7db</td></tr>
-<tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Migrate Standard HDD OS Disks to SSD</td><td>MICROSOFT.COMPUTE/DISKS</td><td>vm-amig-ubu-001_osdisk_1_0c28a750701d4b0c8946f4c29b24cf06</td></tr>
-<tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Migrate workload to Virtual Machine Scale Sets Flex</td><td>MICROSOFT.COMPUTE/VIRTUALMACHINES</td><td>vm-amig-ubu-001</td></tr>
-<tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Migrate workload to Virtual Machine Scale Sets Flex</td><td>MICROSOFT.COMPUTE/VIRTUALMACHINES</td><td>vm-amig-win-001</td></tr>
-<tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Migrate workload to Virtual Machine Scale Sets Flex</td><td>MICROSOFT.COMPUTE/VIRTUALMACHINES</td><td>vm-amig-appl-001</td></tr>
+<tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Migrate Standard HDD OS Disks to SSD</td><td>MICROSOFT.COMPUTE/DISKS</td><td>vm-demo-db-01_osdisk_1_85ac425398fe4cca995190d561270e35</td></tr>
+<tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Migrate Standard HDD OS Disks to SSD</td><td>MICROSOFT.COMPUTE/DISKS</td><td>vm-demo-app-01_osdisk_1_e89fd7546f2f430bb4c2eda57be7a17c</td></tr>
+<tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Migrate Standard HDD OS Disks to SSD</td><td>MICROSOFT.COMPUTE/DISKS</td><td>vm-demo-mgmt-01_osdisk_1_94fcba78c6ed43aea9dd0b66c9bc83cc</td></tr>
+<tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Migrate workload to Virtual Machine Scale Sets Flex</td><td>MICROSOFT.COMPUTE/VIRTUALMACHINES</td><td>vm-demo-app-01</td></tr>
+<tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Migrate workload to Virtual Machine Scale Sets Flex</td><td>MICROSOFT.COMPUTE/VIRTUALMACHINES</td><td>vm-demo-db-01</td></tr>
+<tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Migrate workload to Virtual Machine Scale Sets Flex</td><td>MICROSOFT.COMPUTE/VIRTUALMACHINES</td><td>vm-demo-web-01</td></tr>
+<tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Migrate workload to Virtual Machine Scale Sets Flex</td><td>MICROSOFT.COMPUTE/VIRTUALMACHINES</td><td>vm-demo-mgmt-01</td></tr>
+<tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Migrate Standard HDD OS Disks to SSD</td><td>MICROSOFT.COMPUTE/DISKS</td><td>vm-demo-web-01_osdisk_1_2392e93e7c42432894a9e1d1ba5e26ce</td></tr>
 <tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Use NAT gateway for outbound connectivity</td><td>MICROSOFT.NETWORK/VIRTUALNETWORKS</td><td>vnet-nwri-jpe</td></tr>
+<tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Migrate Standard HDD OS Disks to SSD</td><td>MICROSOFT.COMPUTE/DISKS</td><td>vm-pw-ops-dev-jpw-27161_osdisk_1_d208705db396475a997b7edc60a576f9</td></tr>
 <tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Upgrade to Standard SSD OS disk</td><td>MICROSOFT.COMPUTE/VIRTUALMACHINES</td><td>vm-nwri-src-jpe</td></tr>
+<tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Migrate workload to Virtual Machine Scale Sets Flex</td><td>MICROSOFT.COMPUTE/VIRTUALMACHINES</td><td>vm-amig-appl-001</td></tr>
+<tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Migrate workload to Virtual Machine Scale Sets Flex</td><td>MICROSOFT.COMPUTE/VIRTUALMACHINES</td><td>vm-amig-win-001</td></tr>
+<tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Use NAT gateway for outbound connectivity</td><td>MICROSOFT.NETWORK/VIRTUALNETWORKS</td><td>vm-pw-ops-dev-jpw-27161vnet</td></tr>
 <tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Use NAT gateway for outbound connectivity</td><td>MICROSOFT.NETWORK/VIRTUALNETWORKS</td><td>vnet-amig-demo-je-001</td></tr>
+<tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Migrate workload to Virtual Machine Scale Sets Flex</td><td>MICROSOFT.COMPUTE/VIRTUALMACHINES</td><td>vm-amig-ubu-001</td></tr>
+<tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Migrate Standard HDD OS Disks to SSD</td><td>MICROSOFT.COMPUTE/DISKS</td><td>vm-amig-win-001_osdisk_1_e77733f43d73447c939ab324885f5576</td></tr>
+<tr><td>HighAvailability</td><td><span class='sev-badge sev-med'>Medium</span></td><td>Upgrade to Standard SSD OS disk</td><td>MICROSOFT.COMPUTE/VIRTUALMACHINES</td><td>vm-nwri-dst-jpe</td></tr>
         </tbody>
       </table></div>
     </div>
   </div>
 
 </main>
-<footer>Generated by Azure PowerShell (Resources / RBAC / NSG / Defender for Cloud / Advisor) ／ Narrative: fallback ／ run_id: 29674943260</footer>
+<footer>Generated by Azure PowerShell (Resources / RBAC / NSG / Defender for Cloud / Advisor) ／ Narrative: fallback ／ run_id: 29684926590</footer>
 <script>
 (function () {
   var nav = document.getElementById('domain-tabs');

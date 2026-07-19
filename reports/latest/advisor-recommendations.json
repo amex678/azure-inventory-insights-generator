@@ -1254,22 +1254,6 @@
     "Problem": "Migrate workload to Virtual Machine Scale Sets Flex",
     "Solution": "Migrate workload to Virtual Machine Scale Sets Flex",
     "ImpactedField": "MICROSOFT.COMPUTE/VIRTUALMACHINES",
-    "ImpactedValue": "vm-demo-app-02",
-    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-inventory-demo/providers/microsoft.compute/virtualmachines/vm-demo-app-02",
-    "ResourceName": "vm-demo-app-02",
-    "ResourceType": "MICROSOFT.COMPUTE/VIRTUALMACHINES",
-    "ResourceGroupName": "rg-inventory-demo",
-    "LastUpdated": "2026-06-08T15:15:10.5094576Z",
-    "RecommendationId": "6f81b38528d86aa60784eecdcfc449a1e80267abfd1d4f0a38f279b2666c490c",
-    "Id": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-inventory-demo/providers/microsoft.compute/virtualmachines/vm-demo-app-02/providers/Microsoft.Advisor/recommendations/6f81b38528d86aa60784eecdcfc449a1e80267abfd1d4f0a38f279b2666c490c"
-  },
-  {
-    "Category": "HighAvailability",
-    "Impact": "Medium",
-    "Risk": null,
-    "Problem": "Migrate workload to Virtual Machine Scale Sets Flex",
-    "Solution": "Migrate workload to Virtual Machine Scale Sets Flex",
-    "ImpactedField": "MICROSOFT.COMPUTE/VIRTUALMACHINES",
     "ImpactedValue": "vm-demo-mgmt-01",
     "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-inventory-demo/providers/microsoft.compute/virtualmachines/vm-demo-mgmt-01",
     "ResourceName": "vm-demo-mgmt-01",
@@ -2347,7 +2331,7 @@
     "ResourceName": "mobvmghc-vm-yypwhhh6st5ky",
     "ResourceType": "Microsoft.Compute/virtualMachines",
     "ResourceGroupName": "rg-mobile-ghc-cli",
-    "LastUpdated": "2026-07-07T10:04:07.4611079Z",
+    "LastUpdated": "2026-07-19T10:54:42.7973646Z",
     "RecommendationId": "a566eb721cda4785fc06e2cd1aaffca07d521a5c048d1c1c91f7076f55a1cec4",
     "Id": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-mobile-ghc-cli/providers/microsoft.compute/virtualmachines/mobvmghc-vm-yypwhhh6st5ky/providers/Microsoft.Advisor/recommendations/a566eb721cda4785fc06e2cd1aaffca07d521a5c048d1c1c91f7076f55a1cec4"
   },
@@ -2830,38 +2814,6 @@
     "LastUpdated": "2026-07-13T10:11:39.2471618Z",
     "RecommendationId": "13794fdcd2fba07ae0d6779461758a3eb12a0287d801277aaa4fdc6d7cdb01fa",
     "Id": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-nwri-jpe-20260709/providers/microsoft.network/virtualnetworks/vnet-nwri-jpe/providers/Microsoft.Advisor/recommendations/13794fdcd2fba07ae0d6779461758a3eb12a0287d801277aaa4fdc6d7cdb01fa"
-  },
-  {
-    "Category": "HighAvailability",
-    "Impact": "Low",
-    "Risk": null,
-    "Problem": "Convert Standard to Premium disk for higher uptime",
-    "Solution": "Convert Standard to Premium disk for higher uptime",
-    "ImpactedField": "MICROSOFT.COMPUTE/VIRTUALMACHINES",
-    "ImpactedValue": "vm-nwri-src-jpe",
-    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-nwri-jpe-20260709/providers/microsoft.compute/virtualmachines/vm-nwri-src-jpe",
-    "ResourceName": "vm-nwri-src-jpe",
-    "ResourceType": "MICROSOFT.COMPUTE/VIRTUALMACHINES",
-    "ResourceGroupName": "rg-nwri-jpe-20260709",
-    "LastUpdated": "2026-07-14T08:18:00.7485991Z",
-    "RecommendationId": "40699b3e4c2f91560ff02d2608e75b8c236177a0c1a069a3a56a7ff97fbaaff5",
-    "Id": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-nwri-jpe-20260709/providers/microsoft.compute/virtualmachines/vm-nwri-src-jpe/providers/Microsoft.Advisor/recommendations/40699b3e4c2f91560ff02d2608e75b8c236177a0c1a069a3a56a7ff97fbaaff5"
-  },
-  {
-    "Category": "HighAvailability",
-    "Impact": "Low",
-    "Risk": null,
-    "Problem": "Convert Standard to Premium disk for higher uptime",
-    "Solution": "Convert Standard to Premium disk for higher uptime",
-    "ImpactedField": "MICROSOFT.COMPUTE/VIRTUALMACHINES",
-    "ImpactedValue": "vm-nwri-dst-jpe",
-    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-nwri-jpe-20260709/providers/microsoft.compute/virtualmachines/vm-nwri-dst-jpe",
-    "ResourceName": "vm-nwri-dst-jpe",
-    "ResourceType": "MICROSOFT.COMPUTE/VIRTUALMACHINES",
-    "ResourceGroupName": "rg-nwri-jpe-20260709",
-    "LastUpdated": "2026-07-14T08:18:00.9498921Z",
-    "RecommendationId": "e840dbb7443be62657631b105ca603bc8564d38759ebd3953abd4b8c1fe84c42",
-    "Id": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-nwri-jpe-20260709/providers/microsoft.compute/virtualmachines/vm-nwri-dst-jpe/providers/Microsoft.Advisor/recommendations/e840dbb7443be62657631b105ca603bc8564d38759ebd3953abd4b8c1fe84c42"
   },
   {
     "Category": "Security",
@@ -3518,5 +3470,21 @@
     "LastUpdated": "2026-07-19T01:52:46.2381176Z",
     "RecommendationId": "aafe0ed0576dc18d1ec9c9f3c463dbbac6ce1b8facf83b09657e240b527c716f",
     "Id": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-migrate-demo-je-001/providers/microsoft.compute/virtualmachines/vm-amig-appl-001/providers/Microsoft.Advisor/recommendations/aafe0ed0576dc18d1ec9c9f3c463dbbac6ce1b8facf83b09657e240b527c716f"
+  },
+  {
+    "Category": "HighAvailability",
+    "Impact": "Medium",
+    "Risk": null,
+    "Problem": "Enable Soft Delete to protect your blob data",
+    "Solution": "Enable Soft Delete to protect your blob data",
+    "ImpactedField": "Microsoft.Storage/storageAccounts",
+    "ImpactedValue": "stamiguctnhzjq4unu2",
+    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-migrate-demo-je-001/providers/microsoft.storage/storageaccounts/stamiguctnhzjq4unu2",
+    "ResourceName": "stamiguctnhzjq4unu2",
+    "ResourceType": "Microsoft.Storage/storageAccounts",
+    "ResourceGroupName": "rg-migrate-demo-je-001",
+    "LastUpdated": "2026-07-19T06:18:55.3099531Z",
+    "RecommendationId": "a611e2d5db699b26739b0ed3b08a571c218fcf8d3ceda4c13afe240f0a610fa2",
+    "Id": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-migrate-demo-je-001/providers/microsoft.storage/storageaccounts/stamiguctnhzjq4unu2/providers/Microsoft.Advisor/recommendations/a611e2d5db699b26739b0ed3b08a571c218fcf8d3ceda4c13afe240f0a610fa2"
   }
 ]
