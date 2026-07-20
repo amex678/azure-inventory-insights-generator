@@ -132,11 +132,11 @@
 <body>
 <header class="top">
   <h1>Azure 総合レポート <span class="badge">管理者向け</span> <span class="badge">AI Insights</span> <span class="badge">横断分析</span></h1>
-  <div class="sub">サブスクリプション: ME-MngEnvMCAP720509-tamemiya-1 (1acecba7-23bd-4d4d-9770-0b11998514dc) ／ 生成日時: 2026-07-20 12:28:49 ／ 入力: resources (84) · rbac (41) · nsg (12) · defender (480) · advisor (224)</div>
+  <div class="sub">サブスクリプション: ME-MngEnvMCAP720509-tamemiya-1 (1acecba7-23bd-4d4d-9770-0b11998514dc) ／ 生成日時: 2026-07-20 19:55:52 ／ 入力: resources (84) · rbac (41) · nsg (12) · defender (514) · advisor (224)</div>
 </header>
 <main>
 
-  <div style="background:linear-gradient(90deg,#475569,#64748b); color:#fff; font-size:12px; padding:8px 16px; border-radius:8px; margin-bottom:14px;">&#9881;&#65039; 本文はルールベース（フォールバック）で生成 ／ 理由: body.json が指定されていません（ルールベース散文で生成） ／ run_id: 29742143470</div>
+  <div style="background:linear-gradient(90deg,#475569,#64748b); color:#fff; font-size:12px; padding:8px 16px; border-radius:8px; margin-bottom:14px;">&#9881;&#65039; 本文はルールベース（フォールバック）で生成 ／ 理由: body.json が指定されていません（ルールベース散文で生成） ／ run_id: 29773804267</div>
 
   <div class="tabs" id="domain-tabs">
     <div class="tab-nav" role="tablist">
@@ -144,7 +144,7 @@
       <button class="tab-btn" type="button" role="tab" data-tab="resources">リソース <span class="cnt">84</span></button>
       <button class="tab-btn" type="button" role="tab" data-tab="rbac">RBAC <span class="cnt">41</span></button>
       <button class="tab-btn" type="button" role="tab" data-tab="nsg">NSG <span class="cnt">12</span></button>
-      <button class="tab-btn" type="button" role="tab" data-tab="defender">Defender <span class="cnt">263</span></button>
+      <button class="tab-btn" type="button" role="tab" data-tab="defender">Defender <span class="cnt">275</span></button>
       <button class="tab-btn" type="button" role="tab" data-tab="advisor">Advisor <span class="cnt">224</span></button>
     </div>
 
@@ -162,7 +162,7 @@
 <div class="kpi-grid"><div class='kpi'><div class='kpi-label'>総合スコア</div><div class='kpi-value' style='color:var(--high)'>33<span class='kpi-unit'>/100</span></div><div class='kpi-sub'>重大な是正が必要</div></div>
 <div class='kpi'><div class='kpi-label'>高リスク NSG</div><div class='kpi-value' style='color:var(--ok)'>0<span class='kpi-unit'>件</span></div><div class='kpi-sub'>22/3389 公開</div></div>
 <div class='kpi'><div class='kpi-label'>Owner 付与</div><div class='kpi-value' style='color:var(--high)'>13<span class='kpi-unit'>件</span></div><div class='kpi-sub'>MG スコープ 10</div></div>
-<div class='kpi'><div class='kpi-label'>Secure Score</div><div class='kpi-value' style='color:var(--high)'>31.2<span class='kpi-unit'>%</span></div><div class='kpi-sub'>Healthy 119 / 382</div></div>
+<div class='kpi'><div class='kpi-label'>Secure Score</div><div class='kpi-value' style='color:var(--high)'>32.8<span class='kpi-unit'>%</span></div><div class='kpi-sub'>Healthy 134 / 409</div></div>
 <div class='kpi'><div class='kpi-label'>Advisor High</div><div class='kpi-value' style='color:var(--high)'>77<span class='kpi-unit'>件</span></div><div class='kpi-sub'>総 224 件</div></div>
 <div class='kpi'><div class='kpi-label'>タグ付与率</div><div class='kpi-value' style='color:var(--high)'>42.9<span class='kpi-unit'>%</span></div><div class='kpi-sub'>未付与 48</div></div></div>
 
@@ -171,7 +171,7 @@
     <h3>&#128680; 主要な懸念事項</h3>
     <ul><li><strong>特権境界:</strong> 管理グループ スコープへの <strong>Owner 付与が 10 件</strong>。配下の全サブスクへ権限が波及。</li>
 <li><strong>監査追跡性:</strong> 削除済み ID とみられる孤児候補のロール割り当てが <strong>41 件</strong> 残存。</li>
-<li><strong>セキュリティ態勢:</strong> Defender High Severity 推奨事項 <strong>77 件</strong>（Secure Score 31.2%）。<em>暗号化未有効と特権ロール過剰付与が主因。</em></li>
+<li><strong>セキュリティ態勢:</strong> Defender High Severity 推奨事項 <strong>79 件</strong>（Secure Score 32.8%）。<em>暗号化未有効と特権ロール過剰付与が主因。</em></li>
 <li><strong>最適化機会:</strong> Advisor High Impact <strong>77 件</strong>（HA 52 / Sec 148 / Op 22）。同一 VM 群に重複指摘 → デプロイ テンプレート不備。</li>
 <li><strong>ガバナンス:</strong> タグ付与率 <strong>42.9%</strong>。所有者・コスト按分・連絡先の特定が困難。</li>
 <li><strong>可用性:</strong> ストレージ 4 件中 <strong>4 件が LRS</strong>。AZ 障害時の可用性なし。</li></ul>
@@ -179,7 +179,7 @@
   <div class="exec-col exec-strength">
     <h3>&#9989; 強み</h3>
     <ul><li>NSG 8 個に対し、インターネット → 管理ポートの直接公開なし。</li>
-<li>Defender for Cloud が有効化済み（480 件評価、High 77 / Med 164 / Low 22）。</li>
+<li>Defender for Cloud が有効化済み（514 件評価、High 79 / Med 169 / Low 27）。</li>
 <li>Azure Advisor が稼働中（224 件の最適化機会を可視化）。</li></ul>
   </div>
 </div>
@@ -205,9 +205,9 @@
 <tr><td><span class='dom dom-rbac'>RBAC</span></td><td>Owner / UAA / MG スコープ / MG スコープの Owner</td><td class='num'>13 / 2 / 13 / 10</td></tr>
 <tr><td><span class='dom dom-rbac'>RBAC</span></td><td>孤児候補（DisplayName=null）</td><td class='num'>41</td></tr>
 <tr><td><span class='dom dom-nsg'>NSG</span></td><td>NSG 数 / 総ルール / Inbound Allow / 高リスク</td><td class='num'>8 / 12 / 7 / 0</td></tr>
-<tr><td><span class='dom dom-defender'>Defender</span></td><td>総評価 / Unhealthy (High/Med/Low) / Healthy / NA</td><td class='num'>480 / 263 (77 / 164 / 22) / 119 / 98</td></tr>
-<tr><td><span class='dom dom-defender'>Defender</span></td><td>簡易 Secure Score (Healthy / 評価対象)</td><td class='num'>31.2% (119 / 382)</td></tr>
-<tr><td><span class='dom dom-defender'>Defender</span></td><td>Misconfigurations / Vulnerabilities</td><td class='num'>154 / 109</td></tr>
+<tr><td><span class='dom dom-defender'>Defender</span></td><td>総評価 / Unhealthy (High/Med/Low) / Healthy / NA</td><td class='num'>514 / 275 (79 / 169 / 27) / 134 / 105</td></tr>
+<tr><td><span class='dom dom-defender'>Defender</span></td><td>簡易 Secure Score (Healthy / 評価対象)</td><td class='num'>32.8% (134 / 409)</td></tr>
+<tr><td><span class='dom dom-defender'>Defender</span></td><td>Misconfigurations / Vulnerabilities</td><td class='num'>166 / 109</td></tr>
 <tr><td><span class='dom dom-advisor'>Advisor</span></td><td>総推奨 / Cost / Operational / Performance / HA / Security</td><td class='num'>224 / 2 / 22 / 0 / 52 / 148</td></tr>
 <tr><td><span class='dom dom-advisor'>Advisor</span></td><td>Impact 内訳 High / Medium / Low</td><td class='num'>77 / 107 / 40</td></tr></tbody>
         </table>
@@ -248,7 +248,7 @@
     <h3>Defender for Cloud のセキュリティ態勢ギャップ</h3>
   </header>
   <div class="risk-body">
-    <div class="row"><div class="lbl">観察事実</div><div class="val">Defender for Cloud で Unhealthy が 263 件、うち High 77 件 / Medium 164 件。最頻出は <code>Guest Configuration extension should be installed on machines（11 件）</code>。</div></div>
+    <div class="row"><div class="lbl">観察事実</div><div class="val">Defender for Cloud で Unhealthy が 275 件、うち High 79 件 / Medium 169 件。最頻出は <code>Azure Backup should be enabled for virtual machines（11 件）</code>。</div></div>
     <div class="row"><div class="lbl">リスク理由</div><div class="val">Defender for Cloud の Foundational CSPM は無償で利用可能で、Microsoft Cloud Security Benchmark に基づく構成不備・公開リスク・ID リスク・脆弱性を継続検出します。未有効 or 推奨事項の長期放置は、CIS / NIST / ISO 等のコンプライアンスへの逸脱を恒常化させ、インシデント時の対応コストを著しく増加させます。</div></div>
     <div class="row"><div class="lbl">推奨対応</div><div class="val">サブスクリプション単位で <strong>Foundational CSPM</strong> を有効化、必要に応じて Servers / Storage / Key Vault / AI プランを追加。<strong>Secure Score</strong> を月次でレビューし、High Severity 推奨事項から優先的に是正する。</div></div>
     <div class="row"><div class="lbl">公式ドキュメント</div><div class="val"><ul class="links"><li><a href='https://learn.microsoft.com/ja-jp/azure/defender-for-cloud/defender-for-cloud-introduction' target='_blank' rel='noopener'>Defender for Cloud の概要</a></li><li><a href='https://learn.microsoft.com/ja-jp/azure/defender-for-cloud/get-started' target='_blank' rel='noopener'>Defender for Cloud の有効化</a></li><li><a href='https://learn.microsoft.com/ja-jp/azure/defender-for-cloud/secure-score-security-controls' target='_blank' rel='noopener'>Secure Score の改善</a></li></ul></div></div>
@@ -513,9 +513,9 @@
     <div class="tab-panel" id="tab-defender" role="tabpanel">
       <h2><span class="dom dom-defender">Defender</span> Defender for Cloud 見解 <span class="ai">AI</span></h2>
       <div class="insight" style="padding:14px 18px; border-radius:8px; margin-bottom:16px;">
-        <p>Defender for Cloud は <strong>480 件</strong>の評価を実施し、<strong>Healthy 119 / Unhealthy 263 / NotApplicable 98</strong> という結果。簡易 Secure Score は <strong style='color:var(--high)'>不十分</strong>（Healthy 比率 31.2%）— セキュリティ態勢が脆弱。</p>
-<p><strong>カテゴリ別の見立て:</strong> Unhealthy 263 件のうち、<strong>構成不備 (Misconfigurations) が 154 件</strong>、<strong>脆弱性 (Vulnerabilities) が 109 件</strong>です。構成不備が大多数を占めることは、<em>「ワークロード自体は標準デプロイ済みだが、ハードニング設定とガバナンス統制が未適用」</em> という典型的な初期 Azure 環境の症状を示しています。脆弱性 (CVE 検出) は MDVM (Microsoft Defender Vulnerability Management) が稼働している証拠であり、Defender for Servers Plan 2 が有効である可能性が高いです。</p>
-<p><strong>重大度別の見立て:</strong> High 77 件 / Medium 164 件 / Low 22 件。一般に High の多くは <strong>VM の暗号化 (Azure Disk Encryption / EncryptionAtHost) 未有効</strong> や <strong>サブスク / RG レベルへの SP 管理者ロール付与と恒久特権</strong> に起因し、RBAC レポートの Owner / UAA 過剰付与の指摘と一致するケースが多く見られます。</p>
+        <p>Defender for Cloud は <strong>514 件</strong>の評価を実施し、<strong>Healthy 134 / Unhealthy 275 / NotApplicable 105</strong> という結果。簡易 Secure Score は <strong style='color:var(--high)'>不十分</strong>（Healthy 比率 32.8%）— セキュリティ態勢が脆弱。</p>
+<p><strong>カテゴリ別の見立て:</strong> Unhealthy 275 件のうち、<strong>構成不備 (Misconfigurations) が 166 件</strong>、<strong>脆弱性 (Vulnerabilities) が 109 件</strong>です。構成不備が大多数を占めることは、<em>「ワークロード自体は標準デプロイ済みだが、ハードニング設定とガバナンス統制が未適用」</em> という典型的な初期 Azure 環境の症状を示しています。脆弱性 (CVE 検出) は MDVM (Microsoft Defender Vulnerability Management) が稼働している証拠であり、Defender for Servers Plan 2 が有効である可能性が高いです。</p>
+<p><strong>重大度別の見立て:</strong> High 79 件 / Medium 169 件 / Low 27 件。一般に High の多くは <strong>VM の暗号化 (Azure Disk Encryption / EncryptionAtHost) 未有効</strong> や <strong>サブスク / RG レベルへの SP 管理者ロール付与と恒久特権</strong> に起因し、RBAC レポートの Owner / UAA 過剰付与の指摘と一致するケースが多く見られます。</p>
 <p><strong>横断的なメッセージ:</strong> Defender は「個別の構成不備」を可視化しますが、根本原因は <strong>(a) デプロイ時に暗号化・Backup・Guest Configuration が組み込まれていない</strong>、<strong>(b) AI Services / Storage / Subscription レベルのネットワーク・認証ベースラインが未設定</strong> の 2 点に集約されるケースが一般的です。個別対応ではなく <strong>Azure Policy (Initiative) によるベースライン強制</strong> と <strong>Bicep / Terraform のモジュール改修</strong> で再発防止することを推奨します。</p>
 <p><strong>推奨アクション:</strong></p>
 <ul style="line-height:1.8;">
@@ -531,92 +531,92 @@
           <h3>Unhealthy 推奨事項 Top 5</h3>
           <table>
             <thead><tr><th>推奨事項</th><th class="num">件数</th></tr></thead>
-            <tbody><tr><td>Guest Configuration extension should be installed on machines</td><td class='num'>11</td></tr>
-<tr><td>Azure Backup should be enabled for virtual machines</td><td class='num'>8</td></tr>
-<tr><td>Linux virtual machines should enable Azure Disk Encryption or EncryptionAtHost.</td><td class='num'>8</td></tr>
-<tr><td>Virtual machines and virtual machine scale sets should have encryption at host enabled</td><td class='num'>8</td></tr>
-<tr><td>Update vim</td><td class='num'>6</td></tr></tbody>
+            <tbody><tr><td>Azure Backup should be enabled for virtual machines</td><td class='num'>11</td></tr>
+<tr><td>Virtual machines and virtual machine scale sets should have encryption at host enabled</td><td class='num'>11</td></tr>
+<tr><td>Guest Configuration extension should be installed on machines</td><td class='num'>11</td></tr>
+<tr><td>Linux virtual machines should enable Azure Disk Encryption or EncryptionAtHost.</td><td class='num'>9</td></tr>
+<tr><td>Update vim-tiny</td><td class='num'>6</td></tr></tbody>
           </table>
         </div>
         <div>
           <h3>Unhealthy リソースタイプ別</h3>
           <table>
             <thead><tr><th>Resource Type</th><th class="num">件数</th></tr></thead>
-            <tbody><tr><td>Microsoft.Compute/virtualMachines</td><td class='num'>246</td></tr>
-<tr><td>microsoft.storage/storageaccounts</td><td class='num'>9</td></tr>
+            <tbody><tr><td>Microsoft.Compute/virtualMachines</td><td class='num'>254</td></tr>
+<tr><td>microsoft.storage/storageaccounts</td><td class='num'>12</td></tr>
+<tr><td>microsoft.network/virtualnetworks</td><td class='num'>3</td></tr>
 <tr><td>Microsoft.Security/pricings</td><td class='num'>3</td></tr>
-<tr><td>Subscription</td><td class='num'>3</td></tr>
-<tr><td>microsoft.network/virtualnetworks</td><td class='num'>2</td></tr></tbody>
+<tr><td>Subscription</td><td class='num'>3</td></tr></tbody>
           </table>
         </div>
       </div>
       <h3>High Severity の Unhealthy 一覧（種類別）</h3>
       <table>
         <thead><tr><th>Severity</th><th>推奨事項</th><th class="num">件数</th></tr></thead>
-        <tbody><tr><td><span class='sev-badge sev-high'>High</span></td><td>Linux virtual machines should enable Azure Disk Encryption or EncryptionAtHost.</td><td class='num'>8</td></tr>
+        <tbody><tr><td><span class='sev-badge sev-high'>High</span></td><td>Linux virtual machines should enable Azure Disk Encryption or EncryptionAtHost.</td><td class='num'>9</td></tr>
+<tr><td><span class='sev-badge sev-high'>High</span></td><td>Update vim-tiny_for_linux</td><td class='num'>4</td></tr>
 <tr><td><span class='sev-badge sev-high'>High</span></td><td>Update vim-runtime_for_linux</td><td class='num'>4</td></tr>
 <tr><td><span class='sev-badge sev-high'>High</span></td><td>Update vim-common_for_linux</td><td class='num'>4</td></tr>
 <tr><td><span class='sev-badge sev-high'>High</span></td><td>Update tar_for_linux</td><td class='num'>4</td></tr>
-<tr><td><span class='sev-badge sev-high'>High</span></td><td>Update vim-tiny_for_linux</td><td class='num'>4</td></tr>
 <tr><td><span class='sev-badge sev-high'>High</span></td><td>Update xxd_for_linux</td><td class='num'>4</td></tr>
 <tr><td><span class='sev-badge sev-high'>High</span></td><td>Update gzip_for_linux</td><td class='num'>3</td></tr>
 <tr><td><span class='sev-badge sev-high'>High</span></td><td>Update python3.10-minimal_for_linux</td><td class='num'>3</td></tr>
 <tr><td><span class='sev-badge sev-high'>High</span></td><td>Update python3.10_for_linux</td><td class='num'>3</td></tr>
-<tr><td><span class='sev-badge sev-high'>High</span></td><td>Update openssh-server_for_linux</td><td class='num'>3</td></tr>
-<tr><td><span class='sev-badge sev-high'>High</span></td><td>Update libpython3.10-minimal_for_linux</td><td class='num'>3</td></tr>
-<tr><td><span class='sev-badge sev-high'>High</span></td><td>Update libpython3.10_for_linux</td><td class='num'>3</td></tr>
-<tr><td><span class='sev-badge sev-high'>High</span></td><td>Update libpython3.10-stdlib_for_linux</td><td class='num'>3</td></tr>
-<tr><td><span class='sev-badge sev-high'>High</span></td><td>Update libntfs-3g89_for_linux</td><td class='num'>3</td></tr>
 <tr><td><span class='sev-badge sev-high'>High</span></td><td>Update libnghttp2-14_for_linux</td><td class='num'>3</td></tr>
+<tr><td><span class='sev-badge sev-high'>High</span></td><td>Update libntfs-3g89_for_linux</td><td class='num'>3</td></tr>
+<tr><td><span class='sev-badge sev-high'>High</span></td><td>Update openssh-server_for_linux</td><td class='num'>3</td></tr>
+<tr><td><span class='sev-badge sev-high'>High</span></td><td>Update libpython3.10_for_linux</td><td class='num'>3</td></tr>
+<tr><td><span class='sev-badge sev-high'>High</span></td><td>Update libpython3.10-minimal_for_linux</td><td class='num'>3</td></tr>
+<tr><td><span class='sev-badge sev-high'>High</span></td><td>Update libpython3.10-stdlib_for_linux</td><td class='num'>3</td></tr>
+<tr><td><span class='sev-badge sev-high'>High</span></td><td>Update ncurses-term</td><td class='num'>2</td></tr>
 <tr><td><span class='sev-badge sev-high'>High</span></td><td>Update libsqlite3-0_for_linux</td><td class='num'>2</td></tr>
 <tr><td><span class='sev-badge sev-high'>High</span></td><td>Update libtinfo6</td><td class='num'>2</td></tr>
-<tr><td><span class='sev-badge sev-high'>High</span></td><td>Update edge_chromium-based</td><td class='num'>2</td></tr>
-<tr><td><span class='sev-badge sev-high'>High</span></td><td>Update ncurses-term</td><td class='num'>2</td></tr>
 <tr><td><span class='sev-badge sev-high'>High</span></td><td>Update libncursesw6</td><td class='num'>2</td></tr>
 <tr><td><span class='sev-badge sev-high'>High</span></td><td>Update libncurses6</td><td class='num'>2</td></tr>
+<tr><td><span class='sev-badge sev-high'>High</span></td><td>Update edge_chromium-based</td><td class='num'>2</td></tr>
 <tr><td><span class='sev-badge sev-high'>High</span></td><td>Service Principals should not be assigned with administrative roles at the subscription and resource group level</td><td class='num'>2</td></tr>
 <tr><td><span class='sev-badge sev-high'>High</span></td><td>Update libxml2_for_linux</td><td class='num'>2</td></tr>
-<tr><td><span class='sev-badge sev-high'>High</span></td><td>Update defender_antimalware_platform</td><td class='num'>1</td></tr>
+<tr><td><span class='sev-badge sev-high'>High</span></td><td>Windows virtual machines should enable Azure Disk Encryption or EncryptionAtHost.</td><td class='num'>2</td></tr>
 <tr><td><span class='sev-badge sev-high'>High</span></td><td>Update ntfs-3g</td><td class='num'>1</td></tr>
+<tr><td><span class='sev-badge sev-high'>High</span></td><td>Update libntfs-3g89t64_for_linux</td><td class='num'>1</td></tr>
 <tr><td><span class='sev-badge sev-high'>High</span></td><td>Update python3-httplib2_for_linux</td><td class='num'>1</td></tr>
-<tr><td><span class='sev-badge sev-high'>High</span></td><td>System updates should be installed on your machines (powered by Azure Update Manager)</td><td class='num'>1</td></tr>
-<tr><td><span class='sev-badge sev-high'>High</span></td><td>Privileged roles should not have permanent access at the subscription and resource group level</td><td class='num'>1</td></tr>
-<tr><td><span class='sev-badge sev-high'>High</span></td><td>Update libntfs-3g89t64_for_linux</td><td class='num'>1</td></tr></tbody>
+<tr><td><span class='sev-badge sev-high'>High</span></td><td>Update defender_antimalware_platform</td><td class='num'>1</td></tr>
+<tr><td><span class='sev-badge sev-high'>High</span></td><td>Privileged roles should not have permanent access at the subscription and resource group level</td><td class='num'>1</td></tr></tbody>
       </table>
       <h3>Defender 推奨事項 詳細 <span class="num">(Unhealthy, Severity 順 上位 30)</span></h3>
       <div class="scroll-box"><table>
         <thead><tr><th>Severity</th><th>Recommendation</th><th>Resource Type</th><th>Resource</th><th>RG</th></tr></thead>
         <tbody>
         <tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Email notification to subscription owner for high severity alerts should be enabled</td><td>Subscription</td><td>1acecba7-23bd-4d4d-9770-0b11998514dc</td><td></td></tr>
-<tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Guest Configuration extension should be installed on machines</td><td>microsoft.compute/virtualmachines</td><td>vm-amig-win-001</td><td>rg-migrate-demo-je-001</td></tr>
+<tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Guest Configuration extension should be installed on machines</td><td>microsoft.compute/virtualmachines</td><td>vm-demo-mgmt-01</td><td>rg-inventory-demo</td></tr>
+<tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Guest Configuration extension should be installed on machines</td><td>microsoft.compute/virtualmachines</td><td>vm-demo-app-01</td><td>rg-inventory-demo</td></tr>
+<tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Guest Configuration extension should be installed on machines</td><td>microsoft.compute/virtualmachines</td><td>vm-demo-app-02</td><td>rg-inventory-demo</td></tr>
+<tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Guest Configuration extension should be installed on machines</td><td>microsoft.compute/virtualmachines</td><td>vm-demo-db-01</td><td>rg-inventory-demo</td></tr>
+<tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Guest Configuration extension should be installed on machines</td><td>microsoft.compute/virtualmachines</td><td>vm-demo-web-01</td><td>rg-inventory-demo</td></tr>
+<tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Guest Configuration extension should be installed on machines</td><td>microsoft.compute/virtualmachines</td><td>vm-amig-appl-001</td><td>rg-migrate-demo-je-001</td></tr>
+<tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Guest Configuration extension should be installed on machines</td><td>microsoft.compute/virtualmachines</td><td>vm-pw-ops-dev-jpw-27161</td><td>rg-pw-ops-dev-jpe-27161</td></tr>
 <tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Guest Configuration extension should be installed on machines</td><td>microsoft.compute/virtualmachines</td><td>vm-nwri-src-jpe</td><td>rg-nwri-jpe-20260709</td></tr>
 <tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Guest Configuration extension should be installed on machines</td><td>microsoft.compute/virtualmachines</td><td>vm-nwri-dst-jpe</td><td>rg-nwri-jpe-20260709</td></tr>
-<tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Guest Configuration extension should be installed on machines</td><td>microsoft.compute/virtualmachines</td><td>vm-demo-web-01</td><td>rg-inventory-demo</td></tr>
-<tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Guest Configuration extension should be installed on machines</td><td>microsoft.compute/virtualmachines</td><td>vm-demo-mgmt-01</td><td>rg-inventory-demo</td></tr>
-<tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Guest Configuration extension should be installed on machines</td><td>microsoft.compute/virtualmachines</td><td>vm-demo-db-01</td><td>rg-inventory-demo</td></tr>
-<tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Guest Configuration extension should be installed on machines</td><td>microsoft.compute/virtualmachines</td><td>vm-demo-app-02</td><td>rg-inventory-demo</td></tr>
-<tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Guest Configuration extension should be installed on machines</td><td>microsoft.compute/virtualmachines</td><td>vm-demo-app-01</td><td>rg-inventory-demo</td></tr>
 <tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Guest Configuration extension should be installed on machines</td><td>microsoft.compute/virtualmachines</td><td>vm-amig-ubu-001</td><td>rg-migrate-demo-je-001</td></tr>
-<tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Guest Configuration extension should be installed on machines</td><td>microsoft.compute/virtualmachines</td><td>vm-pw-ops-dev-jpw-27161</td><td>rg-pw-ops-dev-jpe-27161</td></tr>
-<tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Guest Configuration extension should be installed on machines</td><td>microsoft.compute/virtualmachines</td><td>vm-amig-appl-001</td><td>rg-migrate-demo-je-001</td></tr>
-<tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Machines should have a vulnerability assessment solution</td><td>Microsoft.Compute/virtualMachines</td><td>vm-demo-mgmt-01</td><td>RG-INVENTORY-DEMO</td></tr>
+<tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Guest Configuration extension should be installed on machines</td><td>microsoft.compute/virtualmachines</td><td>vm-amig-win-001</td><td>rg-migrate-demo-je-001</td></tr>
 <tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Machines should have a vulnerability assessment solution</td><td>Microsoft.Compute/virtualMachines</td><td>vm-demo-web-01</td><td>RG-INVENTORY-DEMO</td></tr>
-<tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Machines should have a vulnerability assessment solution</td><td>Microsoft.Compute/virtualMachines</td><td>vm-demo-db-01</td><td>RG-INVENTORY-DEMO</td></tr>
 <tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Machines should have a vulnerability assessment solution</td><td>Microsoft.Compute/virtualMachines</td><td>vm-demo-app-02</td><td>RG-INVENTORY-DEMO</td></tr>
+<tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Machines should have a vulnerability assessment solution</td><td>Microsoft.Compute/virtualMachines</td><td>vm-demo-db-01</td><td>RG-INVENTORY-DEMO</td></tr>
+<tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Machines should have a vulnerability assessment solution</td><td>Microsoft.Compute/virtualMachines</td><td>vm-demo-mgmt-01</td><td>RG-INVENTORY-DEMO</td></tr>
 <tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Machines should have a vulnerability assessment solution</td><td>Microsoft.Compute/virtualMachines</td><td>vm-demo-app-01</td><td>RG-INVENTORY-DEMO</td></tr>
-<tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Storage account should use a private link connection</td><td>microsoft.storage/storageaccounts</td><td>mcaps97700b11998514dc</td><td>mcapsgovernance</td></tr>
-<tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Storage account should use a private link connection</td><td>microsoft.storage/storageaccounts</td><td>nwrilkb2l5f6fuhds</td><td>rg-nwri-jpe-20260709</td></tr>
 <tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Storage account should use a private link connection</td><td>microsoft.storage/storageaccounts</td><td>stdemogootyszw77dgs</td><td>rg-inventory-demo</td></tr>
+<tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Storage account should use a private link connection</td><td>microsoft.storage/storageaccounts</td><td>mcaps97700b11998514dc</td><td>mcapsgovernance</td></tr>
+<tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Storage account should use a private link connection</td><td>microsoft.storage/storageaccounts</td><td>stamiguctnhzjq4unu2</td><td>rg-migrate-demo-je-001</td></tr>
+<tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Storage account should use a private link connection</td><td>microsoft.storage/storageaccounts</td><td>nwrilkb2l5f6fuhds</td><td>rg-nwri-jpe-20260709</td></tr>
 <tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Storage accounts should restrict network access using virtual network rules</td><td>microsoft.storage/storageaccounts</td><td>mcaps97700b11998514dc</td><td>mcapsgovernance</td></tr>
 <tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Storage accounts should restrict network access using virtual network rules</td><td>microsoft.storage/storageaccounts</td><td>nwrilkb2l5f6fuhds</td><td>rg-nwri-jpe-20260709</td></tr>
+<tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Storage accounts should restrict network access using virtual network rules</td><td>microsoft.storage/storageaccounts</td><td>stamiguctnhzjq4unu2</td><td>rg-migrate-demo-je-001</td></tr>
 <tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Storage accounts should restrict network access using virtual network rules</td><td>microsoft.storage/storageaccounts</td><td>stdemogootyszw77dgs</td><td>rg-inventory-demo</td></tr>
 <tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Update ca-certificates</td><td>microsoft.compute/virtualmachines</td><td>vm-nwri-src-jpe</td><td>rg-nwri-jpe-20260709</td></tr>
 <tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Update ca-certificates</td><td>microsoft.compute/virtualmachines</td><td>vm-nwri-dst-jpe</td><td>rg-nwri-jpe-20260709</td></tr>
 <tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Update cifs-utils</td><td>Microsoft.Compute/virtualMachines</td><td>vm-nwri-src-jpe</td><td>rg-nwri-jpe-20260709</td></tr>
 <tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Update cifs-utils</td><td>microsoft.compute/virtualmachines</td><td>vm-nwri-src-jpe</td><td>rg-nwri-jpe-20260709</td></tr>
 <tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Update cifs-utils</td><td>microsoft.compute/virtualmachines</td><td>vm-nwri-dst-jpe</td><td>rg-nwri-jpe-20260709</td></tr>
-<tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Update cifs-utils_for_linux</td><td>Microsoft.Compute/virtualMachines</td><td>vm-nwri-src-jpe</td><td>RG-NWRI-JPE-20260709</td></tr>
-<tr><td><span class='sev-badge sev-med'>Medium</span></td><td>Update cifs-utils_for_linux</td><td>Microsoft.Compute/virtualMachines</td><td>vm-nwri-dst-jpe</td><td>RG-NWRI-JPE-20260709</td></tr>
         </tbody>
       </table></div>
     </div>
@@ -711,7 +711,7 @@
   </div>
 
 </main>
-<footer>Generated by Azure PowerShell (Resources / RBAC / NSG / Defender for Cloud / Advisor) ／ Narrative: fallback ／ run_id: 29742143470</footer>
+<footer>Generated by Azure PowerShell (Resources / RBAC / NSG / Defender for Cloud / Advisor) ／ Narrative: fallback ／ run_id: 29773804267</footer>
 <script>
 (function () {
   var nav = document.getElementById('domain-tabs');

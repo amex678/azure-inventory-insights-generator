@@ -2,9 +2,9 @@
   "meta": {
     "subscriptionName": "ME-MngEnvMCAP720509-tamemiya-1",
     "subscriptionId": "1acecba7-23bd-4d4d-9770-0b11998514dc",
-    "generatedAt": "2026-07-20T12:28:48Z",
+    "generatedAt": "2026-07-20T19:55:51Z",
     "reportDate": "2026-07-20",
-    "runId": "29742143470",
+    "runId": "29773804267",
     "schemaVersion": 1
   },
   "facts": {
@@ -30,15 +30,15 @@
     "nsg.ruleCount": 12,
     "nsg.riskyCount": 0,
     "nsg.inboundAllowCount": 7,
-    "defender.total": 480,
-    "defender.unhealthyCount": 263,
-    "defender.healthyCount": 119,
-    "defender.notApplicableCount": 98,
-    "defender.highCount": 77,
-    "defender.mediumCount": 164,
-    "defender.lowCount": 22,
-    "defender.evaluatedCount": 382,
-    "defender.secureScorePct": 31.2,
+    "defender.total": 514,
+    "defender.unhealthyCount": 275,
+    "defender.healthyCount": 134,
+    "defender.notApplicableCount": 105,
+    "defender.highCount": 79,
+    "defender.mediumCount": 169,
+    "defender.lowCount": 27,
+    "defender.evaluatedCount": 409,
+    "defender.secureScorePct": 32.8,
     "advisor.total": 224,
     "advisor.costCount": 2,
     "advisor.operationalCount": 22,
@@ -52,7 +52,7 @@
   "scores": {
     "nsg": 90,
     "rbac": 0,
-    "defender": 31.2,
+    "defender": 32.8,
     "advisor": 0,
     "governance": 42.9,
     "overall": 33.0,
@@ -90,10 +90,10 @@
     {
       "id": "secureScore",
       "label": "Secure Score",
-      "value": 31.2,
+      "value": 32.8,
       "unit": "%",
       "severity": "high",
-      "sub": "Healthy 119 / 382",
+      "sub": "Healthy 134 / 409",
       "fact_id": "defender.secureScorePct"
     },
     {
