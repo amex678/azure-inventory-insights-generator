@@ -3051,7 +3051,7 @@
     "ResourceName": "vm-amig-ubu-001",
     "ResourceType": "Microsoft.Compute/virtualMachines",
     "ResourceGroupName": "rg-migrate-demo-je-001",
-    "LastUpdated": "2026-07-17T09:23:42.7801993Z",
+    "LastUpdated": "2026-07-21T08:55:47.7983107Z",
     "RecommendationId": "80eb5045b747a936c2e4b81a4c7afe7ad9305c12cbf01012f26ee51fc7a1f38f",
     "Id": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-migrate-demo-je-001/providers/microsoft.compute/virtualmachines/vm-amig-ubu-001/providers/Microsoft.Advisor/recommendations/80eb5045b747a936c2e4b81a4c7afe7ad9305c12cbf01012f26ee51fc7a1f38f"
   },
@@ -3067,7 +3067,7 @@
     "ResourceName": "vm-amig-appl-001",
     "ResourceType": "Microsoft.Compute/virtualMachines",
     "ResourceGroupName": "rg-migrate-demo-je-001",
-    "LastUpdated": "2026-07-17T09:23:42.7801409Z",
+    "LastUpdated": "2026-07-21T08:55:47.7982523Z",
     "RecommendationId": "f3b3c92557ea58dbff247477bec2c3feb5a2bb528d97451976707581c270e273",
     "Id": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-migrate-demo-je-001/providers/microsoft.compute/virtualmachines/vm-amig-appl-001/providers/Microsoft.Advisor/recommendations/f3b3c92557ea58dbff247477bec2c3feb5a2bb528d97451976707581c270e273"
   },
@@ -3083,7 +3083,7 @@
     "ResourceName": "vm-amig-win-001",
     "ResourceType": "Microsoft.Compute/virtualMachines",
     "ResourceGroupName": "rg-migrate-demo-je-001",
-    "LastUpdated": "2026-07-17T09:24:05.1922344Z",
+    "LastUpdated": "2026-07-21T08:55:47.8901213Z",
     "RecommendationId": "d6d068065728ede68ad6649846d9bfe3cda218005055784c2d6991734eb916aa",
     "Id": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-migrate-demo-je-001/providers/microsoft.compute/virtualmachines/vm-amig-win-001/providers/Microsoft.Advisor/recommendations/d6d068065728ede68ad6649846d9bfe3cda218005055784c2d6991734eb916aa"
   },
@@ -3774,5 +3774,53 @@
     "LastUpdated": "2026-07-21T05:27:34.8036554Z",
     "RecommendationId": "96705ec6589ea0b45783c3c51bf51f3580b2d53dc753df20ae6e8e2f83b8670e",
     "Id": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-nwri-jpe-20260709/providers/microsoft.compute/virtualmachines/vm-nwri-src-jpe/providers/Microsoft.Advisor/recommendations/96705ec6589ea0b45783c3c51bf51f3580b2d53dc753df20ae6e8e2f83b8670e"
+  },
+  {
+    "Category": "Security",
+    "Impact": "Medium",
+    "Risk": null,
+    "Problem": "Virtual machines and virtual machine scale sets should have encryption at host enabled",
+    "Solution": "Virtual machines and virtual machine scale sets should have encryption at host enabled",
+    "ImpactedField": "Microsoft.Compute/virtualMachines",
+    "ImpactedValue": "vm-amig-win-001",
+    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-migrate-demo-je-001/providers/microsoft.compute/virtualmachines/vm-amig-win-001",
+    "ResourceName": "vm-amig-win-001",
+    "ResourceType": "Microsoft.Compute/virtualMachines",
+    "ResourceGroupName": "rg-migrate-demo-je-001",
+    "LastUpdated": "2026-07-21T05:44:41.3375959Z",
+    "RecommendationId": "84b618e3959a6573a2ce268489ae2a981ce07b4d1593f268b11f031655d68da6",
+    "Id": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-migrate-demo-je-001/providers/microsoft.compute/virtualmachines/vm-amig-win-001/providers/Microsoft.Advisor/recommendations/84b618e3959a6573a2ce268489ae2a981ce07b4d1593f268b11f031655d68da6"
+  },
+  {
+    "Category": "Security",
+    "Impact": "Medium",
+    "Risk": null,
+    "Problem": "Virtual machines and virtual machine scale sets should have encryption at host enabled",
+    "Solution": "Virtual machines and virtual machine scale sets should have encryption at host enabled",
+    "ImpactedField": "Microsoft.Compute/virtualMachines",
+    "ImpactedValue": "vm-amig-ubu-001",
+    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-migrate-demo-je-001/providers/microsoft.compute/virtualmachines/vm-amig-ubu-001",
+    "ResourceName": "vm-amig-ubu-001",
+    "ResourceType": "Microsoft.Compute/virtualMachines",
+    "ResourceGroupName": "rg-migrate-demo-je-001",
+    "LastUpdated": "2026-07-21T05:44:42.0932785Z",
+    "RecommendationId": "f384a279f5b2f58833fd5d0236e8290aabc7ac7eee323a09ac032814ef4f74f8",
+    "Id": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-migrate-demo-je-001/providers/microsoft.compute/virtualmachines/vm-amig-ubu-001/providers/Microsoft.Advisor/recommendations/f384a279f5b2f58833fd5d0236e8290aabc7ac7eee323a09ac032814ef4f74f8"
+  },
+  {
+    "Category": "Security",
+    "Impact": "Medium",
+    "Risk": null,
+    "Problem": "Virtual machines and virtual machine scale sets should have encryption at host enabled",
+    "Solution": "Virtual machines and virtual machine scale sets should have encryption at host enabled",
+    "ImpactedField": "Microsoft.Compute/virtualMachines",
+    "ImpactedValue": "vm-amig-appl-001",
+    "ResourceId": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-migrate-demo-je-001/providers/microsoft.compute/virtualmachines/vm-amig-appl-001",
+    "ResourceName": "vm-amig-appl-001",
+    "ResourceType": "Microsoft.Compute/virtualMachines",
+    "ResourceGroupName": "rg-migrate-demo-je-001",
+    "LastUpdated": "2026-07-21T05:44:42.6357928Z",
+    "RecommendationId": "dbae0a3556c16e6d4a05f98642a257678552de69519b74a523229a605ae6f034",
+    "Id": "/subscriptions/1acecba7-23bd-4d4d-9770-0b11998514dc/resourcegroups/rg-migrate-demo-je-001/providers/microsoft.compute/virtualmachines/vm-amig-appl-001/providers/Microsoft.Advisor/recommendations/dbae0a3556c16e6d4a05f98642a257678552de69519b74a523229a605ae6f034"
   }
 ]
