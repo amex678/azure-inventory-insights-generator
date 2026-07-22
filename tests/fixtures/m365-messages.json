@@ -1,0 +1,50 @@
+{
+  "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#admin/serviceAnnouncement/messages",
+  "value": [
+    {
+      "id": "MC900001",
+      "title": "Updated collaboration controls for Contoso sample",
+      "category": "PlanForChange",
+      "severity": "High",
+      "isMajorChange": true,
+      "startDateTime": "2026-07-20T00:00:00Z",
+      "endDateTime": "2026-09-01T00:00:00Z",
+      "lastModifiedDateTime": "2026-07-22T03:00:00Z",
+      "actionRequiredByDateTime": "2026-08-01T00:00:00Z",
+      "expiryDateTime": null,
+      "services": ["Microsoft Teams", "SharePoint Online"],
+      "tags": ["Updated message"],
+      "body": { "contentType": "Html", "content": "THIS_BODY_MUST_NEVER_BE_PUBLISHED" },
+      "details": [{ "name": "TenantOnly", "value": "THIS_DETAIL_MUST_NEVER_BE_PUBLISHED" }]
+    },
+    {
+      "id": "MC900002",
+      "title": "Sample OneDrive experience update",
+      "category": "StayInformed",
+      "severity": "Normal",
+      "isMajorChange": false,
+      "startDateTime": "2026-07-15T00:00:00Z",
+      "endDateTime": "2026-10-01T00:00:00Z",
+      "lastModifiedDateTime": "2026-07-21T03:00:00Z",
+      "actionRequiredByDateTime": null,
+      "expiryDateTime": null,
+      "services": ["OneDrive for Business"],
+      "tags": []
+    },
+    {
+      "id": "MC900003",
+      "title": "Sample security administration change",
+      "category": "PreventOrFixIssue",
+      "severity": "Critical",
+      "isMajorChange": true,
+      "startDateTime": "2026-07-10T00:00:00Z",
+      "endDateTime": "2026-08-15T00:00:00Z",
+      "lastModifiedDateTime": "2026-07-18T03:00:00Z",
+      "actionRequiredByDateTime": null,
+      "expiryDateTime": null,
+      "services": ["Microsoft 365 suite"],
+      "tags": ["Admin impact"]
+    }
+  ]
+}
+
