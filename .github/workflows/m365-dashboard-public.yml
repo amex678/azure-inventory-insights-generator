@@ -1,0 +1,118 @@
+name: M365 Message Center Dashboard - Public Metadata
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Monday 07:17 JST. GitHub schedules use UTC.
+    - cron: '17 22 * * 0'
+
+concurrency:
+  group: public-reports-pages
+  cancel-in-progress: false
+
+permissions:
+  id-token: write
+  contents: write
+  pages: write
+
+jobs:
+  generate-dashboard:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Sign in to Microsoft Entra ID with OIDC
+        uses: azure/login@a457da9ea143d694b1b9c7c869ebb04ebe844ef5 # v2.3.0
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          allow-no-subscriptions: true
+
+      - name: Export public Message Center metadata
+        shell: pwsh
+        run: |
+          ./scripts/Export-M365MessageCenter.ps1 `
+            -OutputDirectory output/m365 `
+            -LookbackDays 180 `
+            -RunId '${{ github.run_id }}'
+          if (Test-Path reports/m365/latest/insights.json) {
+            Copy-Item reports/m365/latest/insights.json output/m365/insights.json -Force
+            ./scripts/New-M365MessageCenterDashboard.ps1 `
+              -MessagesJson output/m365/messages.json `
+              -InsightsJson output/m365/insights.json `
+              -OutputPath output/m365/index.html
+          } else {
+            ./scripts/New-M365MessageCenterDashboard.ps1 `
+              -MessagesJson output/m365/messages.json `
+              -OutputPath output/m365/index.html
+          }
+          ./scripts/ci/Test-M365Dashboard.ps1
+
+      - name: Upload dashboard artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: m365-message-center-dashboard
+          path: output/m365/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Prepare repository snapshot and Pages site
+        shell: pwsh
+        run: |
+          $runDate = Get-Date -Format 'yyyy-MM-dd'
+          $historyDir = Join-Path 'reports/m365/history' $runDate
+          $latestDir = 'reports/m365/latest'
+          $pagesDir = '_site'
+
+          New-Item -ItemType Directory -Path $historyDir, $latestDir, $pagesDir -Force | Out-Null
+          Copy-Item output/m365/* $historyDir -Recurse -Force
+          Copy-Item output/m365/* $latestDir -Recurse -Force
+
+          if (Test-Path reports/latest/index.html) {
+            Copy-Item reports/latest/* $pagesDir -Recurse -Force
+            Copy-Item reports/latest/index.html (Join-Path $pagesDir 'index.html') -Force
+          } elseif (Test-Path reports/latest/comprehensive-report.html) {
+            Copy-Item reports/latest/* $pagesDir -Recurse -Force
+            Copy-Item reports/latest/comprehensive-report.html (Join-Path $pagesDir 'index.html') -Force
+          }
+
+          New-Item -ItemType Directory -Path (Join-Path $pagesDir 'm365') -Force | Out-Null
+          Copy-Item output/m365/* (Join-Path $pagesDir 'm365') -Recurse -Force
+          '' | Set-Content (Join-Path $pagesDir '.nojekyll') -Encoding utf8
+
+      - name: Commit public dashboard snapshot
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git reset -q -- . || true
+          git add -f reports/m365/
+          if git diff --cached --quiet -- reports/m365/; then
+            echo "No Message Center dashboard changes to commit"
+            exit 0
+          fi
+          git commit -m "Publish M365 Message Center dashboard [skip ci]" -- reports/m365/
+          git push
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site/
+
+  deploy-pages:
+    needs: generate-dashboard
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}m365/
+    steps:
+      - name: Deploy combined reports site
+        id: deployment
+        uses: actions/deploy-pages@v4
