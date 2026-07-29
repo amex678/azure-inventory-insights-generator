@@ -11,7 +11,7 @@ on:
 
 # Single-flight: never run two report generations at once (avoids duplicate agent tasks).
 concurrency:
-  group: public-reports-pages
+  group: azure-report
   cancel-in-progress: false
 
 permissions:
@@ -284,11 +284,6 @@ jobs:
 
           Copy-Item -Path output/comprehensive-report.html -Destination (Join-Path $latestDir 'index.html') -Force
           Copy-Item -Path output/comprehensive-report.html -Destination (Join-Path $pagesDir 'index.html') -Force
-          if (Test-Path reports/m365/latest/index.html) {
-            $m365PagesDir = Join-Path $pagesDir 'm365'
-            New-Item -ItemType Directory -Path $m365PagesDir -Force | Out-Null
-            Copy-Item -Path reports/m365/latest/* -Destination $m365PagesDir -Recurse -Force
-          }
           '' | Set-Content -Path (Join-Path $pagesDir '.nojekyll') -Encoding utf8
 
       - name: Commit report snapshot to repository
